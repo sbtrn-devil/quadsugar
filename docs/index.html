@@ -976,7 +976,7 @@ var inlinePublicSymbol;
 </code></pre>
 <div class="_LP_paragraph">There is a better solution: use <strong>Quadsugar</strong> (QS for short).</div>
 <pre><code>&lt;html&gt;
-&lt;script src=&quot;[TODO]/quadsugar.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://sbtrn-devil.github.io/quadsugar/quadsugar-1.0.0.js&quot;&gt;&lt;/script&gt;
 &lt;!-- but better download it and put nearby, or even paste inline, in order to reduce external depencencies and prevent leftpad-like conditions --&gt;
 &lt;script&gt;
 var PublicSymbol;
@@ -1012,8 +1012,11 @@ challenging to implement palatably in plain JS.</div>
 </div><div class="_LP_paragraph">This means QS makes sense to use in Node.JS as well (although it is primarily browser environment oriented). In this case it looks as follows:</div>
 <div id="_H1P" style="display: none"><span id="_H1Q"></span></div>
 <div id="_H1R">
-<pre><code># install
-npm install [TODO]
+<pre><code># install from gitverse
+npm install git+https://gitverse.ru/mikle33/quadsugar
+
+# or: from github
+npm install git+https://github.com/sbtrn-devil/quadsugar
 </code></pre>
 <div class="_LP_paragraph">Then, in a CommonJS style module:</div>
 <pre><code>const QUADSUGAR = require('quadsugar');
@@ -6105,7 +6108,7 @@ Maps keyed by e. g. a tuple or a dictionary-type record is not possible on built
 require any extra syntax or polyfills on top of standard ES 2019, and utilises some JIT-alike approach under the hood (some JS code generated on demand, attempting to address performance side of the problem).</div>
 <div class="_LP_paragraph">VT can be used both in browser environment:</div>
 <pre><code>...
-&lt;script src=&quot;[TODO]/valuetype.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://sbtrn-devil.github.io/quadsugar/valuetype-1.0.0.js&quot;&gt;&lt;/script&gt;
 &lt;!-- but better download it and put nearby, or even paste inline, in order to reduce external depencencies and prevent leftpad-like conditions --&gt;
 ...
 &lt;script&gt;
@@ -6117,9 +6120,12 @@ console.log(map.get(v));
 console.log(map.get(ValueType.New `{ x: ${1}, y: ${2} }`));
 &lt;/script&gt;
 </code></pre>
-<div class="_LP_paragraph">and in Node.js environment:</div>
-<pre><code># install
-npm install [TODO]
+<div class="_LP_paragraph">and in Node.js environment (within Quadsugar package):</div>
+<pre><code># from gitverse
+npm install git+https://gitverse.ru/mikle33/quadsugar
+
+# or: from github
+npm install git+https://github.com/sbtrn-devil/quadsugar
 </code></pre>
 <div class="_LP_paragraph">Then, in a CommonJS style module:</div>
 <pre><code>const ValueType = require('quadsugar/valuetype');

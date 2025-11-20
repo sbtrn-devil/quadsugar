@@ -22,7 +22,7 @@ require any extra syntax or polyfills on top of standard ES 2019, and utilises s
 VT can be used both in browser environment:
 ```
 ...
-<script src="[TODO]/valuetype.js"></script>
+<script src="https://sbtrn-devil.github.io/quadsugar/valuetype-1.0.0.js"></script>
 <!-- but better download it and put nearby, or even paste inline, in order to reduce external depencencies and prevent leftpad-like conditions -->
 ...
 <script>
@@ -35,10 +35,13 @@ console.log(map.get(ValueType.New `{ x: ${1}, y: ${2} }`));
 </script>
 ```
 
-and in Node.js environment:
+and in Node.js environment (within Quadsugar package):
 ```
-# install
-npm install [TODO]
+# from gitverse
+npm install git+https://gitverse.ru/mikle33/quadsugar
+
+# or: from github
+npm install git+https://github.com/sbtrn-devil/quadsugar
 ```
 
 Then, in a CommonJS style module:

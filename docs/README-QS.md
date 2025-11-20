@@ -96,7 +96,7 @@ There is a better solution: use __Quadsugar__ (QS for short).
 
 ```
 <html>
-<script src="[TODO]/quadsugar.js"></script>
+<script src="https://sbtrn-devil.github.io/quadsugar/quadsugar-1.0.0.js"></script>
 <!-- but better download it and put nearby, or even paste inline, in order to reduce external depencencies and prevent leftpad-like conditions -->
 <script>
 var PublicSymbol;
@@ -124,8 +124,11 @@ To keep the text clean, we'll tend to skip QS wrapper parts in further writing, 
 This means QS makes sense to use in Node.JS as well (although it is primarily browser environment oriented). In this case it looks as follows:
 
 ```
-# install
-npm install [TODO]
+# install from gitverse
+npm install git+https://gitverse.ru/mikle33/quadsugar
+
+# or: from github
+npm install git+https://github.com/sbtrn-devil/quadsugar
 ```
 
 Then, in a CommonJS style module:
