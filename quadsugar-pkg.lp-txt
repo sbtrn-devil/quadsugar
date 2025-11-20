@@ -1,0 +1,30 @@
+#LP-alias M: domain.quadsugar-package
+
+#LP M {
+
+#LP M/main-doc { <#./%title: Quadsugar & ValueType#>
+
+Quadsugar package contains two decoupled libraries: Quadsugar and ValueType. They can used be independently, or in combination.
+
+#LP ./quadsugar { <#./%title: Quadsugar#> <#./%order: 1#>
+Quadsugar (QS) is browser-oriented, embeddable JavaScript preprocessor that allows to selectively enhance the JS code with some conveniences:
+
+- Improved exception and finalization handling.
+- Variable and property references.
+- Static and precalculated expressions.
+- Static (compile-time) template tags, including framework for custom algebras (operator overloading, in familiar terms).
+
+QS documentation is available [here](docs/README-QS.md).
+#LP } <-#quadsugar#>
+
+#LP ./valuetype { <#./%title: ValueType#> <#./%order: 2#>
+ValueType (VT) is a JavaScript library focused on idea of value-type objects that can be compared and used as map keys using value-equality comparison logic.
+
+It comes packaged with Quadsugar, but is technically independent, so can be easily debundled and used on its own.
+
+VT documentation is available [here](docs/README-VT.md).
+#LP } <-#valuetype#>
+
+#LP ./docs { <#./%title: Combined documentation#> <#./%order: 3#>
+In addition to individual documentation pages, a combined documentation HTML page with more advanced navigation is available here: [TODO].
+#LP } <-#docs#>
