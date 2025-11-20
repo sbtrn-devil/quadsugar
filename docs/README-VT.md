@@ -173,8 +173,8 @@ var testVTO2 = ValueType.New `{ v: ${ValueType.New `{ x: ${1}, y: ${2} }`} }`;
 However, if you need to deal with VTOs that span more than one nesting level, it is more practical to do this directly in the schema:
 ```
 var testVTO2 = ValueType.New `{ v: { x: ${1}, y: ${2} } }`;
-// it is also possible to specify the same using a destructuring subschema:
-var testVTO2 = ValueType.New `{ v: @{x,y} ${{x: 1, y: 2}} } }`;
+// it is also possible to specify the same using a destructuring subschema (we'll get back to that in a while with more details):
+var testVTO2 = ValueType.New `{ v: @{x,y} ...${{x: 1, y: 2}} } }`;
 ```
 
 Thus, a VTO structure can be quite complex:
