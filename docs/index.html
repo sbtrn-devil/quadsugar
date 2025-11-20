@@ -1056,8 +1056,8 @@ QUADSUGAR.wrap(() =&gt; {
 <div class="_LP_paragraph">This design decision is made for a number of reasons. Not the most important of them, but neither the least, is the conceptual coherence: JS is a C-like language, not Python-like, and should stay this way.
 Aligning with this requirement is not that difficult, it is just a matter of a small bit of discipline.</div>
 <h2>Syntax compliance</h2>
-<div class="_LP_paragraph">QS itself is ES 2019 compliant, and assumes the wrapped code is as well. Features that use syntax from more recent ES specs are not explicitly deprecated,
-but they are not explicitly supported as well, so there can be subtle and cryptic errors if you try it - before trying any serious code, it makes sense to
+<div class="_LP_paragraph">QS itself is ES 2019 compliant (compatible with Node.js 13+ and last Windows 7 capable versions of major browsers), and assumes the wrapped code is as well. Features that use syntax from more recent ES
+specs are not explicitly deprecated, but they are not explicitly supported as well, so there can be subtle and cryptic errors if you try it - before trying any serious code, it makes sense to
 try some quick test use cases to see if the syntax of your choice works correctly.</div>
 <div class="_LP_paragraph">The newer ES features that only involve use of new objects/classes/properties with no new syntax are totally ok to use.</div>
 <h2>Minification challenges</h2>
@@ -6181,16 +6181,17 @@ immutability is a part of <strong>Functionally Anti Programming Cargo Cult (FAPC
 <a id="_HTl" name="_HTk"></a>
 <div id="_HTk">
 <div id="_HTm"></div><div id="_HTn"></div><div style="flex-grow: 1" id="_HTs"></div><div id="_HTo"></div><div id="_HTp"></div><div id="_HTq"></div><div id="_HTr"></div>
-</div><div class="_LP_paragraph">A <strong>value-type value</strong> is either a primitive value (<code>undefined</code>, <code>null</code>, boolean, string, number, bigint, symbol), or a <strong>value-type object</strong> (VTO), that is an array or object that meets the following requirements:</div>
+</div><div class="_LP_paragraph">A <strong>value-type value</strong> is either a primitive value (<code>undefined</code>, <code>null</code>, boolean, string, number, bigint, symbol), or a <strong>value-type object</strong> (VTO), that is an array or an object that meets the following requirements:</div>
 <ul>
-<li>its shallow schema (that is, the set of its own property keys, and whether it is an array) is fixed and frozen during the object's lifetime, preferably known or predictable statically,</li>
-<li>it is qualified as a value-type object.
-The values under VTO's keys may in turn be, or may be not, value-type values.</li>
+<li>its shallow schema (that is, the set of its own property keys, and whether the object is an array) is fixed and frozen during the object's lifetime, and preferably is known or predictable statically,</li>
+<li>it is qualified as a VTO.
+The values by VTO's keys may in turn be, or may be not, value-type values. Note that only string and numeric keys are allowed in VTOs (no symbol keys), with numeric keys only allowed in array-type VTOs and
+string keys only allowed in non-array VTOs, and mixing string and numeric keys within the same VTO is not allowed.</li>
 </ul>
 <div id="_HTh" style="display: none"><span id="_HTi"></span></div>
 <div id="_HTj">
-<div class="_LP_paragraph">The second point is important: an object created just by <code>Object.freeze({ key: value })</code> does not automatically become a VTO. In fact, VTOs can only be created in a few specific ways, which we'll discuss a bit
-later.</div>
+<div class="_LP_paragraph">The &quot;qualified as a VTO&quot; point is important: an object created just by <code>Object.freeze({ key: value })</code> does not automatically become a VTO. In fact, VTOs can only be created in a few specific ways,
+which we'll discuss a bit later.</div>
 <div class="_LP_paragraph">Value-type values are meant to be compared by <strong>value-type equality</strong>:</div>
 <ul>
 <li>a primitive value or a non-VTO is value-type equal to another value (value-type or not) if they are equal per JS <code>===</code> operator (that is, non-VTO objects are value-type equal only to themselves),</li>
@@ -6237,7 +6238,7 @@ var arr3 = ValueType.New `[${&quot;a&quot;}, ${100}]`; // for array with continu
 so you could just rewrite the above literals more concisely:</div>
 <pre><code>ValueType.New `{ x ${10} y ${20} }`;
 ValueType.New `{ &quot;x&quot; ${10} &quot;y&quot; ${20} }`;
-ValueType.New `[0 ${&quot;a&quot;}, 1 ${100}]`;
+ValueType.New `[0 ${&quot;a&quot;} 1 ${100}]`;
 ValueType.New `[0 ${&quot;a&quot;} 2 ${200}]`;
 ValueType.New `[${&quot;a&quot;} ${100}]`;
 </code></pre>
@@ -6296,21 +6297,21 @@ ValueType.From(value1) `+{ y: +[2: ${3}] }`; // error: value1.y is a VTO, but is
 ValueType.From(value1) `+{ y: +{ +b: { b1: ${2} } }`; // error: value1.y.b is not an object
 </code></pre>
 <div class="_LP_paragraph">A mismatch between the original value against the modification schema will result in runtime error thrown.</div>
-<div class="_LP_paragraph">Since a VTO is immutable, result of the <code>ValueType.From</code> literal is always a copy of the</div>
+<div class="_LP_paragraph">Since a VTO is immutable, result of the <code>ValueType.From</code> literal is always a new object, although its unmodified VTO-members can remain copied by reference.</div>
 <h2>Destructuring schemas and subschemas</h2>
-<div class="_LP_paragraph">If a VTO has some intricate, repetitive or verbose structure, or has a widely used mutable counterpart with frequent casts from or to, another way of creating them may be practical - by using pre-declared
-destructuring schemas.</div>
+<div class="_LP_paragraph">If a VTO has some intricate, repetitive or verbose structure, or has a widely used mutable counterpart with frequent casts from or to, another way of creating them may be practical -
+by using pre-declared destructuring schemas.</div>
 <pre><code>var schVec = ValueType.Schema `{ x, y, z[0, 1] }`; // a VTO that consists of members x, y, and z, where z is an array-type VTO that consists of 2 indexes 0 and 1
 </code></pre>
 <div class="_LP_paragraph">Then schema can be used to create a VTO from destructuring a JS object:</div>
 <pre><code>var vecVal = schVec.valueFrom({ x: 1, y: { text: &quot;non-VTO&quot; }, z: [10, 20] });
 // same as: ValueType.New `{ x: ${1}, y: ${{ text: &quot;non-VTO&quot; }}, z: [0: 10, 1: 20] }`;
 </code></pre>
-<div class="_LP_paragraph">A schema must <strong>fit</strong> the destructured object: all of the referenced members and sub-members must exist.</div>
+<div class="_LP_paragraph">A schema must be <strong>fit</strong> by the destructured object: all of the referenced members and sub-members must exist.</div>
 <pre><code>schVec.valueFrom({ x: 1, y: 2 }); // incorrect: destructured object has no z member
 </code></pre>
 <div class="_LP_paragraph">Compliance failure will result in runtime error thrown.
-Schema object has <code>.fits</code> method that allows to test in advance whether an object complies with it:</div>
+Schema object has <code>.fits</code> method that allows to test in advance whether an object fits it:</div>
 <pre><code>schVec.fits({ x: 1, y: 2, z: [3, 4] }); // true
 schVec.fits({ x: 1, y: 2 }); // false: no z
 schVec.fits({ x: 1, y: 2, z: [3, 4], w: &quot;yes&quot; }); // true: extra members are allowed, they will be ignored on destructuring
@@ -6384,7 +6385,7 @@ if <code>v1</code> is 'greater' than <code>v2</code>, or 0 if they are 'equal'.<
 (at cost of some performance and increased footprint), you can add a third argument with non-false falue: <code>ValueType.comparator(v1, v2, true)</code>. This enforces string ordering between <em>any</em> values.</div>
 <div class="_LP_paragraph">Note that the order introduced by <code>ValueType.comparator</code>, with or without 3rd parameter, is intentionally private and only holds within the current JS context - it is does not persist and is not
 guaranteed to be consistent between different reloads of same page or Node.js runs. Therefore, you should not rely on assumptions about two values will be in a particular specific order, other than
-it will be a valid order within the current JS context.</div>
+it will be a consistent order within the current JS context.</div>
 <h2>Checking if a value is value-type</h2>
 <div class="_LP_paragraph"><code>ValueType.isValue(v)</code> method returns true if (or false unless) <code>v</code> is a value-type value:</div>
 <pre><code>ValueType.isValue(ValueType.New `{ x: ${1} }`); // true

@@ -107,8 +107,8 @@ Aligning with this requirement is not that difficult, it is just a matter of a s
 
 ## Syntax compliance
 
-QS itself is ES 2019 compliant, and assumes the wrapped code is as well. Features that use syntax from more recent ES specs are not explicitly deprecated,
-but they are not explicitly supported as well, so there can be subtle and cryptic errors if you try it - before trying any serious code, it makes sense to
+QS itself is ES 2019 compliant (compatible with Node.js 13+ and last Windows 7 capable versions of major browsers), and assumes the wrapped code is as well. Features that use syntax from more recent ES
+specs are not explicitly deprecated, but they are not explicitly supported as well, so there can be subtle and cryptic errors if you try it - before trying any serious code, it makes sense to
 try some quick test use cases to see if the syntax of your choice works correctly.
 
 The newer ES features that only involve use of new objects/classes/properties with no new syntax are totally ok to use.

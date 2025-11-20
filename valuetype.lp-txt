@@ -75,13 +75,14 @@ Trying this, you will probably notice these objects handling are quite inconveni
 
 #LP ./value-types { <#./%title: Value-type concepts#> <#./%order: 2#>
 
-A __value-type value__ is either a primitive value (`undefined`, `null`, boolean, string, number, bigint, symbol), or a __value-type object__ (VTO), that is an array or object that meets the following requirements:
-- its shallow schema (that is, the set of its own property keys, and whether it is an array) is fixed and frozen during the object's lifetime, preferably known or predictable statically,
-- it is qualified as a value-type object.
-The values under VTO's keys may in turn be, or may be not, value-type values.
+A __value-type value__ is either a primitive value (`undefined`, `null`, boolean, string, number, bigint, symbol), or a __value-type object__ (VTO), that is an array or an object that meets the following requirements:
+- its shallow schema (that is, the set of its own property keys, and whether the object is an array) is fixed and frozen during the object's lifetime, and preferably is known or predictable statically,
+- it is qualified as a VTO.
+The values by VTO's keys may in turn be, or may be not, value-type values. Note that only string and numeric keys are allowed in VTOs (no symbol keys), with numeric keys only allowed in array-type VTOs and
+string keys only allowed in non-array VTOs, and mixing string and numeric keys within the same VTO is not allowed.
 
-The second point is important: an object created just by `Object.freeze({ key: value })` does not automatically become a VTO. In fact, VTOs can only be created in a few specific ways, which we'll discuss a bit
-later.
+The "qualified as a VTO" point is important: an object created just by `Object.freeze({ key: value })` does not automatically become a VTO. In fact, VTOs can only be created in a few specific ways,
+which we'll discuss a bit later.
 
 Value-type values are meant to be compared by __value-type equality__:
 - a primitive value or a non-VTO is value-type equal to another value (value-type or not) if they are equal per JS `===` operator (that is, non-VTO objects are value-type equal only to themselves),
@@ -114,7 +115,7 @@ so you could just rewrite the above literals more concisely:
 ```
 ValueType.New `{ x ${10} y ${20} }`;
 ValueType.New `{ "x" ${10} "y" ${20} }`;
-ValueType.New `[0 ${"a"}, 1 ${100}]`;
+ValueType.New `[0 ${"a"} 1 ${100}]`;
 ValueType.New `[0 ${"a"} 2 ${200}]`;
 ValueType.New `[${"a"} ${100}]`;
 ```
@@ -190,12 +191,12 @@ ValueType.From(value1) `+{ y: +{ +b: { b1: ${2} } }`; // error: value1.y.b is no
 ```
 A mismatch between the original value against the modification schema will result in runtime error thrown.
 
-Since a VTO is immutable, result of the `ValueType.From` literal is always a copy of the
+Since a VTO is immutable, result of the `ValueType.From` literal is always a new object, although its unmodified VTO-members can remain copied by reference.
 
 ## Destructuring schemas and subschemas
 
-If a VTO has some intricate, repetitive or verbose structure, or has a widely used mutable counterpart with frequent casts from or to, another way of creating them may be practical - by using pre-declared
-destructuring schemas.
+If a VTO has some intricate, repetitive or verbose structure, or has a widely used mutable counterpart with frequent casts from or to, another way of creating them may be practical -
+by using pre-declared destructuring schemas.
 
 ```
 var schVec = ValueType.Schema `{ x, y, z[0, 1] }`; // a VTO that consists of members x, y, and z, where z is an array-type VTO that consists of 2 indexes 0 and 1
@@ -206,12 +207,12 @@ var vecVal = schVec.valueFrom({ x: 1, y: { text: "non-VTO" }, z: [10, 20] });
 // same as: ValueType.New `{ x: ${1}, y: ${{ text: "non-VTO" }}, z: [0: 10, 1: 20] }`;
 ```
 
-A schema must __fit__ the destructured object: all of the referenced members and sub-members must exist.
+A schema must be __fit__ by the destructured object: all of the referenced members and sub-members must exist.
 ```
 schVec.valueFrom({ x: 1, y: 2 }); // incorrect: destructured object has no z member
 ```
 Compliance failure will result in runtime error thrown.
-Schema object has `.fits` method that allows to test in advance whether an object complies with it:
+Schema object has `.fits` method that allows to test in advance whether an object fits it:
 ```
 schVec.fits({ x: 1, y: 2, z: [3, 4] }); // true
 schVec.fits({ x: 1, y: 2 }); // false: no z
@@ -280,7 +281,7 @@ The comparator uses a slightly relaxed notion of equality compared to value-type
 
 Note that the order introduced by `ValueType.comparator`, with or without 3rd parameter, is intentionally private and only holds within the current JS context - it is does not persist and is not
 guaranteed to be consistent between different reloads of same page or Node.js runs. Therefore, you should not rely on assumptions about two values will be in a particular specific order, other than
-it will be a valid order within the current JS context.
+it will be a consistent order within the current JS context.
 
 ## Checking if a value is value-type
 
