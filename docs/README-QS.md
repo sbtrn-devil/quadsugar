@@ -46,7 +46,6 @@ Quadsugar (QS) is browser-oriented, embeddable JavaScript preprocessor that allo
       - Caching and static tag processing[>>](#_Av2HZ06M-1)
       - QS built-in cache implementations[>>](#_Av1Cta1B-3)
         - OptionalSyncCache[>>](#_Av1J43qP-1)
-          - name[>>](#_Av1J43qP-47)
         - LocalStorageSyncCache[>>](#_Av1J43qP-55)
         - IndexedDbAsyncCache[>>](#_Av1J43qP-56)
 
@@ -2947,9 +2946,38 @@ String, the cache as stringified JSON.
 [Browser only] Issues a download request with the cache serialized into JSON file, which can be deserialized back and used with
 `setPrecapturedItems(dictionary)`[>>](#_Av1J43qP-8). You also can specify the name for the downloadable file.
 
+<u>**Arguments**</u>
+
+<table>
+<tr>
+<th>
+
+Name
+
+</th><th>
+
+Description
+
+</th>
+</tr>
+<tr>
+<td>
+
+`name`[>>](#_Av1J43qP-47)
+
+</td><td>
+
+String, name for the downloaded file (with no ".json" extension)
+
+</td>
+</tr>
+</table>
+
 <u>**Returns:**</u>
 
 `true`
+
+<u>**Arguments (detailed)**</u>
 
 <a name="_Av1J43qP-47"></a>
 ###### name ######

@@ -2446,7 +2446,7 @@ can be used with <#ref OptionalSyncCache/setPrecapturedItems#>. You must enable 
 #LP ./browserDownloadCapturedJson %method { <#./%title: browserDownloadCapturedJson(name)#>
 [Browser only] Issues a download request with the cache serialized into JSON file, which can be deserialized back and used with
 <#ref OptionalSyncCache/setPrecapturedItems#>. You also can specify the name for the downloadable file.
-#LP ./name: String, name for the downloaded file (with no ".json" extension)
+#LP ./name %arg: String, name for the downloaded file (with no ".json" extension)
 #LP ./%return: `true`
 #LP } <-#browserDownloadCapturedJson#>
 
