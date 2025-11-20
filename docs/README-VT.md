@@ -88,7 +88,7 @@ Specifically, we would like to warn in advance against sevaral most obvious misu
 No, this is totally not what it is tailored for. Usage of VT objects should only be restricted to map keys and passing around as such, and the variety of map key structures should be kept to a reasonable minimum.
 Data immutability is not an end in itself, but rather a forced measure for consistency in the intended use case.
 If you mean other cases involving immutable data, it is better to resort to more dedicated libraries for them. Or, which is better and more appropriate for JS, reconsider necessity in these cases at all. Data
-immutability is a part of __Functionally Anti Programming Cargo Cult (FAPCC)__, which is a bane of modern programming, and of JS programming specifically.
+immutability is a part of __Functional Anti Programming Cargo Cult (FAPCC)__, which is a bane of modern programming, and of JS programming specifically.
 
 - Using VT objects as source and target for serialization/deserialization of various inputs/outputs.
 

@@ -26,5 +26,6 @@ VT documentation is available [here](docs/README-VT.md).
 #LP } <-#valuetype#>
 
 #LP ./docs { <#./%title: Combined documentation#> <#./%order: 3#>
-In addition to individual documentation pages, a combined documentation HTML page with more advanced navigation is available here: [TODO].
+In addition to individual documentation pages, a combined documentation HTML page with more advanced navigation is available here:
+[https://sbtrn-devil.github.io/quadsugar/](https://sbtrn-devil.github.io/quadsugar/).
 #LP } <-#docs#>

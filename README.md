@@ -29,7 +29,8 @@ VT documentation is available [here](docs/README-VT.md).
 <a name="_Av32QHyd-1"></a>
 ## Combined documentation ##
 
-In addition to individual documentation pages, a combined documentation HTML page with more advanced navigation is available here: [TODO].
+In addition to individual documentation pages, a combined documentation HTML page with more advanced navigation is available here:
+[https://sbtrn-devil.github.io/quadsugar/](https://sbtrn-devil.github.io/quadsugar/).
 
 
 ---
