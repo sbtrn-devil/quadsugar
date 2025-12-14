@@ -962,7 +962,7 @@ function MapVTK(enumerable = EMPTY_ARRAY) {
 	const rootMapNode = { __proto__: null, byValue: new Map(), bySchema: new Map() },
 		entries = new Set();
 
-	return {
+	return ({
 		__proto__: MapVTK.prototype,
 		[MAP_STATE]: {
 			getEntry(key) { return lookupMap(rootMapNode, key); },
@@ -985,7 +985,7 @@ function MapVTK(enumerable = EMPTY_ARRAY) {
 				entries.clear();
 			}
 		}
-	};
+	}.setAll(enumerable));
 }
 
 Object.assign(MapVTK.prototype, {
