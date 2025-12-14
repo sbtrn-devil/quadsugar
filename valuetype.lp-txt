@@ -22,7 +22,7 @@ require any extra syntax or polyfills on top of standard ES 2019, and utilises s
 VT can be used both in browser environment:
 ```
 ...
-<script src="https://sbtrn-devil.github.io/quadsugar/valuetype-1.0.0.js"></script>
+<script src="https://sbtrn-devil.github.io/quadsugar/valuetype-1.0.1.js"></script>
 <!-- but better download it and put nearby, or even paste inline, in order to reduce external depencencies and prevent leftpad-like conditions -->
 ...
 <script>

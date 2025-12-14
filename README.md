@@ -1,11 +1,11 @@
 
 
-<a name="_Av32Pbdt-2"></a>
+<a name="_Av5okjWA-3"></a>
 # Quadsugar &amp; ValueType #
 
 Quadsugar package contains two decoupled libraries: Quadsugar and ValueType. They can used be independently, or in combination.
 
-<a name="_Av32Pbdt-4"></a>
+<a name="_Av5okjWA-5"></a>
 ## Quadsugar ##
 
 Quadsugar (QS) is browser-oriented, embeddable JavaScript preprocessor that allows to selectively enhance the JS code with some conveniences:
@@ -17,7 +17,7 @@ Quadsugar (QS) is browser-oriented, embeddable JavaScript preprocessor that allo
 
 QS documentation is available [here](docs/README-QS.md).
 
-<a name="_Av32Pbdt-7"></a>
+<a name="_Av5okjWA-8"></a>
 ## ValueType ##
 
 ValueType (VT) is a JavaScript library focused on idea of value-type objects that can be compared and used as map keys using value-equality comparison logic.
@@ -26,7 +26,7 @@ It comes packaged with Quadsugar, but is technically independent, so can be easi
 
 VT documentation is available [here](docs/README-VT.md).
 
-<a name="_Av32QHyd-1"></a>
+<a name="_Av5okjWA-11"></a>
 ## Combined documentation ##
 
 In addition to individual documentation pages, a combined documentation HTML page with more advanced navigation is available here:

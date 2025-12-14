@@ -1,6 +1,6 @@
 {
   "name": "quadsugar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Quadsugar (QS) is browser-oriented, embeddable JavaScript preprocessor that allows to selectively enhance the JS code with some conveniences. ValueType (VT) is a JavaScript library focused on idea of value-type objects that can be compared and used as map keys using value-equality comparison logic.",
   "main": "quadsugar.js",
   "scripts": {

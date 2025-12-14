@@ -43,7 +43,7 @@ There is a better solution: use __Quadsugar__ (QS for short).
 
 ```
 <html>
-<script src="https://sbtrn-devil.github.io/quadsugar/quadsugar-1.0.0.js"></script>
+<script src="https://sbtrn-devil.github.io/quadsugar/quadsugar-1.0.1.js"></script>
 <!-- but better download it and put nearby, or even paste inline, in order to reduce external depencencies and prevent leftpad-like conditions -->
 <script>
 var PublicSymbol;

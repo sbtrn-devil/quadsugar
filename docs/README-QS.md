@@ -10,48 +10,48 @@ Quadsugar (QS) is browser-oriented, embeddable JavaScript preprocessor that allo
 ---
 
 
-- Quadsugar[>>](#_Av076ptq-1)
-  - Introduction[>>](#_Av076ptq-2)
-    - Node.JS support[>>](#_Av076ptq-4)
-    - Some important notes before proceeding[>>](#_Av076ptq-6)
-  - Improved exception and finalization handling[>>](#_Av07EVzm-1)
-    - TRY expression[>>](#_Av07EVzm-3)
-    - FINALLY meta-label[>>](#_Av07EVzm-5)
-    - CATCH meta-label and catch-switch[>>](#_Av07EVzm-7)
-  - Variable and property references[>>](#_Av07GN9C-1)
-  - Static and precaltulated expressions[>>](#_Av0jwSYX-1)
-    - Static expressions[>>](#_Av0jwSYX-4)
-    - Precalculated expressions[>>](#_Av0jwSYX-7)
-  - Static template tags[>>](#_Av0jwSYX-10)
-    - Custom algebras[>>](#_Av0jwSYX-13)
-      - Preface[>>](#_Av1lOlMA-1)
-      - Basic principles and operators specification[>>](#_Av0vcVXw-1)
-      - Type control[>>](#_Av0Be0yK-1)
-      - Literal parsing[>>](#_Av0Be0yK-4)
-      - Placeholder casting[>>](#_Av0YJqGU-2)
-      - Implicit value casting[>>](#_Av0Be0yK-10)
-      - Cast rules and tracing[>>](#_Av0YJqGU-5)
-      - Placeholder modes[>>](#_Av0YJqGU-8)
-      - Lazy arguments[>>](#_Av0Be0yK-13)
-      - Context object[>>](#_Av0Be0yK-19)
-      - Post-evaluation[>>](#_Av0Be0yK-16)
-      - Occurrence tag object[>>](#_Av0Be0yK-22)
-      - Summary on evaluator argument specifiers[>>](#_Av0YJqGU-11)
-      - Custom algebra example sum-up[>>](#_Av1lOlMA-4)
-    - Simple static tag processors[>>](#_Av1urGT0-1)
-  - Quadsugar configuration[>>](#_Av0YJqGU-17)
-    - Compiled code caching[>>](#_Av0YJqGU-20)
-      - Caching strategies[>>](#_Av1Csx6x-3)
-      - Cache object interface[>>](#_Av1Csx6x-6)
-      - Caching and static tag processing[>>](#_Av2HZ06M-1)
-      - QS built-in cache implementations[>>](#_Av1Cta1B-3)
-        - OptionalSyncCache[>>](#_Av1J43qP-1)
-        - LocalStorageSyncCache[>>](#_Av1J43qP-55)
-        - IndexedDbAsyncCache[>>](#_Av1J43qP-56)
+- Quadsugar[>>](#_Av5okjWA-15)
+  - Introduction[>>](#_Av5okjWA-17)
+    - Node.JS support[>>](#_Av5okjWA-20)
+    - Some important notes before proceeding[>>](#_Av5okjWA-23)
+  - Improved exception and finalization handling[>>](#_Av5okjWA-26)
+    - TRY expression[>>](#_Av5okjWA-29)
+    - FINALLY meta-label[>>](#_Av5okjWA-32)
+    - CATCH meta-label and catch-switch[>>](#_Av5okjWA-35)
+  - Variable and property references[>>](#_Av5okjWA-38)
+  - Static and precaltulated expressions[>>](#_Av5okjWA-41)
+    - Static expressions[>>](#_Av5okjWA-44)
+    - Precalculated expressions[>>](#_Av5okjWA-47)
+  - Static template tags[>>](#_Av5okjWA-50)
+    - Custom algebras[>>](#_Av5okjWA-53)
+      - Preface[>>](#_Av5okjWA-56)
+      - Basic principles and operators specification[>>](#_Av5okjWA-60)
+      - Type control[>>](#_Av5okjWA-63)
+      - Literal parsing[>>](#_Av5okjWA-66)
+      - Placeholder casting[>>](#_Av5okjWA-69)
+      - Implicit value casting[>>](#_Av5okjWA-72)
+      - Cast rules and tracing[>>](#_Av5okjWA-75)
+      - Placeholder modes[>>](#_Av5okjWA-78)
+      - Lazy arguments[>>](#_Av5okjWA-81)
+      - Context object[>>](#_Av5okjWA-84)
+      - Post-evaluation[>>](#_Av5okjWA-87)
+      - Occurrence tag object[>>](#_Av5okjWA-90)
+      - Summary on evaluator argument specifiers[>>](#_Av5okjWA-93)
+      - Custom algebra example sum-up[>>](#_Av5okjWA-59)
+    - Simple static tag processors[>>](#_Av5okjWA-98)
+  - Quadsugar configuration[>>](#_Av5okjWA-101)
+    - Compiled code caching[>>](#_Av5okjWA-106)
+      - Caching strategies[>>](#_Av5okjWA-108)
+      - Cache object interface[>>](#_Av5okjWA-111)
+      - Caching and static tag processing[>>](#_Av5okjWA-128)
+      - QS built-in cache implementations[>>](#_Av5okjWA-114)
+        - OptionalSyncCache[>>](#_Av5okjWA-133)
+        - LocalStorageSyncCache[>>](#_Av5okjWA-186)
+        - IndexedDbAsyncCache[>>](#_Av5okjWA-187)
 
 ---
 
-<a name="_Av076ptq-1"></a>
+<a name="_Av5okjWA-15"></a>
 # Quadsugar #
 
 Quadsugar (QS) is browser-oriented, embeddable JavaScript preprocessor that allows to selectively enhance the JS code with some conveniences:
@@ -61,7 +61,7 @@ Quadsugar (QS) is browser-oriented, embeddable JavaScript preprocessor that allo
 - Static and precalculated expressions.
 - Static (compile-time) template tags, including framework for custom algebras (operator overloading, in familiar terms).
 
-<a name="_Av076ptq-2"></a>
+<a name="_Av5okjWA-17"></a>
 ## Introduction ##
 
 When writing a self-contained single HTML5 page with scripts, one of the issues is controllable encapsulation of names. Tools for handling this
@@ -117,7 +117,7 @@ challenging to implement palatably in plain JS.
 
 To keep the text clean, we'll tend to skip QS wrapper parts in further writing, except for when it is essential to delimit the ongoings inside and outside.
 
-<a name="_Av076ptq-4"></a>
+<a name="_Av5okjWA-20"></a>
 ### Node.JS support ###
 
 This means QS makes sense to use in Node.JS as well (although it is primarily browser environment oriented). In this case it looks as follows:
@@ -146,7 +146,7 @@ QUADSUGAR.wrap(() => {
 	code => eval(code));
 ```
 
-<a name="_Av076ptq-6"></a>
+<a name="_Av5okjWA-23"></a>
 ### Some important notes before proceeding ###
 
 ## No optional semicolons
@@ -172,7 +172,7 @@ The newer ES features that only involve use of new objects/classes/properties wi
 
 QS code, as well as source code for QS preprocessing and the resulting generated code, is known to baffle the minifiers and to not work correctly after minification. Please be aware of this.
 
-<a name="_Av07EVzm-1"></a>
+<a name="_Av5okjWA-26"></a>
 ## Improved exception and finalization handling ##
 
 Built-in JS exception and finalization handling via `try/catch/finally` comes from Java. Controversial as it already is, this approach is even less fit in a dynamic typing world, where it is not possible
@@ -180,7 +180,7 @@ to have multiple catch clauses separated by exception class. This makes usabilit
 
 QS offers several alternative ways, arguably more natural and convenient ones, to express the exception handling and finalization concepts.
 
-<a name="_Av07EVzm-3"></a>
+<a name="_Av5okjWA-29"></a>
 ### TRY expression ###
 
 `TRY` expression:
@@ -237,7 +237,7 @@ var wrappedResult = TRY(...);
 var actualResult = wrappedResult.or(e => defaultValue);
 ```
 
-<a name="_Av07EVzm-5"></a>
+<a name="_Av5okjWA-32"></a>
 ### FINALLY meta-label ###
 
 A statement under `FINALLY` label will be executed on exit from the block it is immediately under, no matter how (ab)normally the block ends. But only if the normal execution flow managed to reach the
@@ -293,7 +293,7 @@ FINALLY: for (var resource of arrayOfResources) {
 ... // fill up the arrayOfResources
 ```
 
-<a name="_Av07EVzm-7"></a>
+<a name="_Av5okjWA-35"></a>
 ### CATCH meta-label and catch-switch ###
 
 When `CATCH`-labeled statement is put immediately inside a block, an exception that occurs before this statement is reached causes the execution to make forward jump to it:
@@ -409,7 +409,7 @@ and always do `if (typeof (symbol) !== 'undefined')` check. Since this is a not 
 }
 ```
 
-<a name="_Av07GN9C-1"></a>
+<a name="_Av5okjWA-38"></a>
 ## Variable and property references ##
 
 A reference is an object with `value` property reading and writing to which is forwarded to some other destination.
@@ -475,12 +475,12 @@ for (var increaser of arrayIncreasers) increaser();
 Note that with `BIND`-type reference, due to the logic of the expression binding, the lvalue expression is not allowed to contain `await` or `yield [*]`
 operators.
 
-<a name="_Av0jwSYX-1"></a>
+<a name="_Av5okjWA-41"></a>
 ## Static and precaltulated expressions ##
 
 With these tools you can explicitly specify that certain inline expressions only need to be evaluated once per certain scope.
 
-<a name="_Av0jwSYX-4"></a>
+<a name="_Av5okjWA-44"></a>
 ### Static expressions ###
 
 An expression `STATIC(expr)` will only be evaluated once when it is first reached, and use this value on all next evaluations of this particular code location.
@@ -533,7 +533,7 @@ outside the blocks that contain them, and shadow the marks from outer blocks.
 }
 ```
 
-<a name="_Av0jwSYX-7"></a>
+<a name="_Av5okjWA-47"></a>
 ### Precalculated expressions ###
 
 Static expressions only evaluate when the code that uses them is first executed, but that may happen at indefinite time, or never. But what if we need
@@ -615,14 +615,14 @@ Like with `STATIC`, `PRECALC` can only refer to scope labels that are located ea
 If the restrictions of `PRECALC` are ok for your use case, you may prefer it to `STATIC` as it generates a slightly more performant underlying code due to saving on
 a first-run check.
 
-<a name="_Av0jwSYX-10"></a>
+<a name="_Av5okjWA-50"></a>
 ## Static template tags ##
 
 This feature group enhances JS tagged template string feature, allowing you to override standard runtime handling of tagged template expressions of certain format (``Identifier `string-with-placeholders` `` and
 ``Identifier(args) `string-with-placeholders` `` for particular identifiers, optionally ``"Identifier" `...` `` and ``"Identifier"(...)`...` ``) and replace it with preprocessing-time handling, which enables
 to do things not normally possible.
 
-<a name="_Av0jwSYX-13"></a>
+<a name="_Av5okjWA-53"></a>
 ### Custom algebras ###
 
 Operator overloading is a useful feature in (some) static typed languages, which poorly borrows as is into dynamic typed world. Known approaches, like Lua metatables, are rather clumsy and more like
@@ -635,14 +635,14 @@ every evaluation of the expression needs at least a lookup on the template strin
 QS allows to deal with both, providing easy high-level method of defining custom algebras for use in QS-wrapped code and translating their expressions directly to code that doesn't need tag manipulation layer
 in the actual runtime.
 
-<a name="_Av1lOlMA-1"></a>
+<a name="_Av5okjWA-56"></a>
 #### Preface ####
 
 For clarity, explanation of QS custom algebra features will be given on example of a custom algebra for 2D vectors. It will start off a very simple
 and basic specification, which will be extended in each next section as each new feature is introduced. If you struggle to keep track on what the current code
-looks like, or want to take a quick look-ahead, see here for the complete example: `Custom algebra example sum-up`[>>](#_Av1lOlMA-4)
+looks like, or want to take a quick look-ahead, see here for the complete example: `Custom algebra example sum-up`[>>](#_Av5okjWA-59)
 
-<a name="_Av0vcVXw-1"></a>
+<a name="_Av5okjWA-60"></a>
 #### Basic principles and operators specification ####
 
 So, let's say, we are implementing a custom algebra for 2D vectors represented by arrays of length 2.
@@ -765,7 +765,7 @@ In this case, it makes sense to add an argument `'OPERATOR'` to the evaluator, w
 	}) // actually a somewhat suboptimal way to define two distinct operators in this particular case
 ```
 
-<a name="_Av0Be0yK-1"></a>
+<a name="_Av5okjWA-63"></a>
 #### Type control ####
 
 Vector algebra is incomplete without scalar multiplication, let's fix it:
@@ -873,7 +873,7 @@ This way we achieved our initial intent. Although it is still possible to write 
 from our dynamic typing experience, right? Also, it is possible to add `.evaluation` clause to `N` and `V` operators with value coercion or check - but let's not bother, there are more interesting possibilities
 ahead.
 
-<a name="_Av0Be0yK-4"></a>
+<a name="_Av5okjWA-66"></a>
 #### Literal parsing ####
 
 Now we have more or less decent 2D vector algebra, but there is still space for improvement.
@@ -918,7 +918,7 @@ a compile-time error will be generated like this: `'Vec2D': Vec2D expression: ex
 Declaration of literal parser is not limited by precedence consideration and can occur anywhere at top level of the algebra declaration array (same actually
 applies to all declarations except for operators).
 
-<a name="_Av0YJqGU-2"></a>
+<a name="_Av5okjWA-69"></a>
 #### Placeholder casting ####
 
 Similarly, you can add type casting to placeholders, although you are more limited to the detection options here as the placeholder value is not known in advance.
@@ -981,7 +981,7 @@ More explanations will follow, for now just keep in mind that, when determining 
 are preferred over ones with evaluators, explicitly user-defined ones are preferred over default ones (for example, we can comment out the `ct.placeholderCast('dynamic')...` to let the default one
 have effect, and there will be no ambiguity issues), and ones without `.secondary()` clause are preferred over the ones with one.
 
-<a name="_Av0Be0yK-10"></a>
+<a name="_Av5okjWA-72"></a>
 #### Implicit value casting ####
 
 In addition to placeholder casts, which only apply to the placeholder values, you can define implicit casts between values of different types. They will come into play if there are no operator definitions
@@ -1017,7 +1017,7 @@ Like placeholder cast and prefix/postfix operators, the value cast can have `eva
 There are built-in default casts from any value to `dynamic` (except for from `void`), they are identity-type operations and will be used on occasion if no explicit casts to `dynamic` are provided (which
 typically is sufficient).
 
-<a name="_Av0YJqGU-5"></a>
+<a name="_Av5okjWA-75"></a>
 #### Cast rules and tracing ####
 
 Now, to summarize the rules QS custom algebra uses for desambiguation of types in the overall exprssion.
@@ -1070,7 +1070,7 @@ vec2d <- LEFT_BIN['*'](
 )
 ```
 
-<a name="_Av0YJqGU-8"></a>
+<a name="_Av5okjWA-78"></a>
 #### Placeholder modes ####
 
 Let's say, we now want to implement `+=` operator (and `=` on that account) for a vector. We can leverage `REF` feature and go this way:
@@ -1205,7 +1205,7 @@ Funny enough, it works even this way:
 ```
 (but, of course, no magic here - this case works as a direct `number_lvalue` placeholder and no `[]` operator from our algebra is involved, you can see it in algebra trace mode.)
 
-<a name="_Av0Be0yK-13"></a>
+<a name="_Av5okjWA-81"></a>
 #### Lazy arguments ####
 
 Let's say, we want a `&&` and `||` operators for vectors, where `null` or a `[0, 0]` vector is considered a false.
@@ -1269,7 +1269,7 @@ and on which you need to use function call, and on which you don't). Thus, the a
 For design consistency, a lazy argument is also supported on unary operators (`'ARG_LAZY'` argument specifier), but in most cases it makes little to no sense
 to have a single lazy operand.
 
-<a name="_Av0Be0yK-19"></a>
+<a name="_Av5okjWA-84"></a>
 #### Context object ####
 
 It is possible to introduce a __context object__ that will be created on each evaluation of the expression and shared by all the evaluators and other
@@ -1372,7 +1372,7 @@ algebra implementation uses "don't pay for what you don't use" principle for a c
 use context argument, then no context object is not created, and the context constructor is not invoked. Be careful though, using algebra tag with non-empty
 arguments list (i. e. ``Vec2D(...)`...` ``) is always counted as explicit usage of context constructor.
 
-<a name="_Av0Be0yK-16"></a>
+<a name="_Av5okjWA-87"></a>
 #### Post-evaluation ####
 
 It is possible to specify a post-evaluation function to be applied to the overall expression result and possibly to post-process it.
@@ -1442,7 +1442,7 @@ such usage then be sure to back up with an emergency finalization),
 - levaraging the post-evaluation modes for a nicer syntax,
 - etc.
 
-<a name="_Av0Be0yK-22"></a>
+<a name="_Av5okjWA-90"></a>
 #### Occurrence tag object ####
 
 Occurrence tag is somewhat similar to context object, but it exists statically and is always the same (by reference) for all evaluations of an expression
@@ -1465,7 +1465,7 @@ The occurrence tag is accessible to an evaluator via `'OCCURENCE_TAG'` argument 
 for each expression that involves an evaluation that needs it, and is initially an empty object (as per `new Object()` expression), but you can populate it
 with any data from the evaluators, keeping in mind that the object persists between the evaluations.
 
-<a name="_Av0YJqGU-11"></a>
+<a name="_Av5okjWA-93"></a>
 #### Summary on evaluator argument specifiers ####
 
 A quick recap summary on the argument specifierss that you can pass to evaluators.
@@ -1635,7 +1635,7 @@ Occurrence tag value, statically persistent and shared by all evaluations of the
 </tr>
 </table>
 
-<a name="_Av1lOlMA-4"></a>
+<a name="_Av5okjWA-59"></a>
 #### Custom algebra example sum-up ####
 
 The complete algebra specification from our example after following all of the above sections looks like this:
@@ -1871,7 +1871,7 @@ to take a look into the preprocessed code, it is translated to something very di
 ```
 So, as you can see, the custom algebra expressions are translated to as efficient inline code as reasonably possible.
 
-<a name="_Av1urGT0-1"></a>
+<a name="_Av5okjWA-98"></a>
 ### Simple static tag processors ###
 
 If QS custom algebra does not provide you enough flexibility (or, conversely, it looks like an overkill), there is an alternative tool that can be used under the static tag umbrella -
@@ -1991,7 +1991,7 @@ QUADSUGAR
 }
 ```
 
-<a name="_Av0YJqGU-17"></a>
+<a name="_Av5okjWA-101"></a>
 ## Quadsugar configuration ##
 
 Quadsugar wrapper is configurable.
@@ -2082,7 +2082,7 @@ QUADSUGAR
 });
 ```
 
-Tag declaration objects must be created in advance using `QUADSUGAR.staticAlgebraTag` and/or `QUADSUGAR.staticSimpleTag` methods (see `Static template tags`[>>](#_Av0jwSYX-10)).
+Tag declaration objects must be created in advance using `QUADSUGAR.staticAlgebraTag` and/or `QUADSUGAR.staticSimpleTag` methods (see `Static template tags`[>>](#_Av5okjWA-50)).
 
 If multiple `.useStaticTags` clauses are used on the same configuration object, the tags from each clause are added up, as if it was a single merged dictionary. In case of a confliciting tag, the tag
 from the latest clause is in effect.
@@ -2182,7 +2182,7 @@ The profiling only applies to QS preprocessing of the code, not the code running
 `.useSyncCache` and `.useAsyncCache` can enable one of two QS caching strategies, with `.disableCacheHit` as an additional control valve.
 Caching is a separate complex subject that will be discussed in its own section.
 
-<a name="_Av0YJqGU-20"></a>
+<a name="_Av5okjWA-106"></a>
 ### Compiled code caching ###
 
 QS tries into performance. Nevertheless, you should realize that its pipeline assumes triple overhead:
@@ -2242,7 +2242,7 @@ Different wrapped code fragments can use different caches and caching strategies
 Caching can drastically decrease QS preprocessing overhead on repeated reloads of unchanged code, so keeping your wrapped code fragments reasonably granular makes sense in both development and operation phase:
 the less code has to be preprocessed on an update, the faster the turnaround will be.
 
-<a name="_Av1Csx6x-3"></a>
+<a name="_Av5okjWA-108"></a>
 #### Caching strategies ####
 
 There are two possible caching strategies:
@@ -2283,7 +2283,7 @@ qsCache.commit().then(() => {
 Some bundling systems like [Emery Spinner](https://github.com/sbtrn-devil/emery-spinner) (a shameless plug), have means to make non-module scripts loading transparently asyncronous and to alleviate this sort
 of inconvenience.
 
-<a name="_Av1Csx6x-6"></a>
+<a name="_Av5okjWA-111"></a>
 #### Cache object interface ####
 
 A cache object is any object that complies the following interface:
@@ -2301,11 +2301,11 @@ Additionally, it can implement its own implementation specific methods, e. g. fo
 `.setItem` and `.getItems` must be synchronous for a synchronous cache, or can be asynchronous for asynchronous cache.
 Note that a synchronous cache implementation can be used with both synchronous and asynchronous cache strategies, while an asynchronous cache implementation can only be used with asynchronous strategy.
 
-QS provides several built-in cache implemenations (`QS built-in cache implementations`[>>](#_Av1Cta1B-3)), but you can implement and use your own caches.
+QS provides several built-in cache implemenations (`QS built-in cache implementations`[>>](#_Av5okjWA-114)), but you can implement and use your own caches.
 
 <u>**Properties**</u>
 
-<a name="_Av1CzoeF-7"></a>
+<a name="_Av5okjWA-125"></a>
 ##### commit #####
 
 In a newly created object, this must be a reserved writable slot not used in any way by the object implementation itself. When using the cache object for async cache strategy,
@@ -2316,7 +2316,7 @@ finished. It is not generally recommended to use the cache object in any way unt
 
 <u>**Methods**</u>
 
-<a name="_Av1Csx6x-9"></a>
+<a name="_Av5okjWA-115"></a>
 ##### .setItem(hash, codeString) #####
 
 Store an item in the cache under the given hash as a key. Overwrite possibly existing one.
@@ -2338,7 +2338,7 @@ Description
 <tr>
 <td>
 
-`hash`[>>](#_Av1Cta1B-1)
+`hash`[>>](#_Av5okjWA-118)
 
 </td><td>
 
@@ -2349,7 +2349,7 @@ String. The code fragment hash (a stringified 16 digit hex number). Must be used
 <tr>
 <td>
 
-`codeString`[>>](#_Av1CzoeF-1)
+`codeString`[>>](#_Av5okjWA-120)
 
 </td><td>
 
@@ -2361,17 +2361,17 @@ String. The actual code fragment to store under the given hash key.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1Cta1B-1"></a>
+<a name="_Av5okjWA-118"></a>
 ###### hash ######
 
 String. The code fragment hash (a stringified 16 digit hex number). Must be used as the cache key.
 
-<a name="_Av1CzoeF-1"></a>
+<a name="_Av5okjWA-120"></a>
 ###### codeString ######
 
 String. The actual code fragment to store under the given hash key.
 
-<a name="_Av1CzoeF-2"></a>
+<a name="_Av5okjWA-121"></a>
 ##### .getItems(hashes) #####
 
 Retreive a set of items from the cache by the given list of hashes.
@@ -2393,11 +2393,11 @@ Description
 <tr>
 <td>
 
-`hashes`[>>](#_Av1CzoeF-4)
+`hashes`[>>](#_Av5okjWA-123)
 
 </td><td>
 
-Array of strings. The list of hashes to retrieve the items by. Each is assumed to be a hash possibly used earlier in `.setItem(hash, codeString)`[>>](#_Av1Csx6x-9).
+Array of strings. The list of hashes to retrieve the items by. Each is assumed to be a hash possibly used earlier in `.setItem(hash, codeString)`[>>](#_Av5okjWA-115).
 
 </td>
 </tr>
@@ -2409,12 +2409,12 @@ A dictionary of the found items, as JS object where a key is a hash and the valu
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1CzoeF-4"></a>
+<a name="_Av5okjWA-123"></a>
 ###### hashes ######
 
-Array of strings. The list of hashes to retrieve the items by. Each is assumed to be a hash possibly used earlier in `.setItem(hash, codeString)`[>>](#_Av1Csx6x-9).
+Array of strings. The list of hashes to retrieve the items by. Each is assumed to be a hash possibly used earlier in `.setItem(hash, codeString)`[>>](#_Av5okjWA-115).
 
-<a name="_Av2HZ06M-1"></a>
+<a name="_Av5okjWA-128"></a>
 #### Caching and static tag processing ####
 
 There is a caveat worth to be noted: when using caching, some static tag processing callbacks can be not called or can be called in different environment in cache-hit conditions. Specifically:
@@ -2464,12 +2464,12 @@ QUADSUGAR
 
 If this clause is added with `true` parameter (or with no parameter), then "always cache miss" mode is enabled, while the caching strategy itself and adding cache items still remain in place.
 
-<a name="_Av1Cta1B-3"></a>
+<a name="_Av5okjWA-114"></a>
 #### QS built-in cache implementations ####
 
 QS provides several built-in cache implementations, primarily browser environment oriented.
 
-<a name="_Av1J43qP-1"></a>
+<a name="_Av5okjWA-133"></a>
 ##### OptionalSyncCache #####
 
 A synchronous cache that does no actual caching by default, but can be configured to load pre-compiled cache or to capture the cached items. It can be
@@ -2480,22 +2480,22 @@ There are following uses for this cache implementation:
 - Use a cache compiled ahead, e. g. to a JSON file, and/or prepare data for such a cache. Although QS has no complete solution for a traditional pre-compile
 pipeline, the `OptionalSyncCache` can be used as building blocks for one.
 
-In order to enable capturing the items, you need to call `captureNewItems(yes)`[>>](#_Av1J43qP-2) with `true` before using the cache.
+In order to enable capturing the items, you need to call `captureNewItems(yes)`[>>](#_Av5okjWA-134) with `true` before using the cache.
 
 <u>**Properties**</u>
 
-<a name="_Av1J43qP-15"></a>
+<a name="_Av5okjWA-147"></a>
 ###### commit [placeholder] ######
 
 Placeholder for `async commit()` method, filled after first use of the cache with async strategy.
 
 <u>**Methods**</u>
 
-<a name="_Av1J43qP-2"></a>
+<a name="_Av5okjWA-134"></a>
 ###### captureNewItems(yes) ######
 
-Enable or disable capturing new items into the cache (disabled by default). If not enabled, the `setItem(hash, codeString)`[>>](#_Av1J43qP-11) will be a no-op (but the
-items supplied via `setPrecapturedItems(dictionary)`[>>](#_Av1J43qP-8) will still be available via `getItems(hashes)`[>>](#_Av1J43qP-6)).
+Enable or disable capturing new items into the cache (disabled by default). If not enabled, the `setItem(hash, codeString)`[>>](#_Av5okjWA-143) will be a no-op (but the
+items supplied via `setPrecapturedItems(dictionary)`[>>](#_Av5okjWA-140) will still be available via `getItems(hashes)`[>>](#_Av5okjWA-138)).
 Note that the cache is not persistent, so in order to make use of the cached changes you will need to use one of the saving methods.
 
 <u>**Arguments**</u>
@@ -2515,7 +2515,7 @@ Description
 <tr>
 <td>
 
-`yes`[>>](#_Av1J43qP-33)
+`yes`[>>](#_Av5okjWA-165)
 
 </td><td>
 
@@ -2531,12 +2531,12 @@ Self, allowing method chaining
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-33"></a>
+<a name="_Av5okjWA-165"></a>
 ###### yes ######
 
 `true` if adding new items to the cache must be enabled, `false` otherwise
 
-<a name="_Av1J43qP-3"></a>
+<a name="_Av5okjWA-135"></a>
 ###### OptionalSyncCache() [constructor] ######
 
 Construct the instance of `OptinalSyncCache`. Use via `new QUADSUGAR.OptionalSyncCache()` or `QUADSUGAR.OptionalSyncCache()`.
@@ -2545,11 +2545,11 @@ Construct the instance of `OptinalSyncCache`. Use via `new QUADSUGAR.OptionalSyn
 
 `OptinalSyncCache` instance
 
-<a name="_Av1J43qP-6"></a>
+<a name="_Av5okjWA-138"></a>
 ###### getItems(hashes) ######
 
-The synchronous implementation of `.getItems(hashes)`[>>](#_Av1CzoeF-2). Returns empty dictionary, unless precaptured content is supplied via
-`setPrecapturedItems(dictionary)`[>>](#_Av1J43qP-8), or new items capturing is enabled by `captureNewItems(yes)`[>>](#_Av1J43qP-2).
+The synchronous implementation of `.getItems(hashes)`[>>](#_Av5okjWA-121). Returns empty dictionary, unless precaptured content is supplied via
+`setPrecapturedItems(dictionary)`[>>](#_Av5okjWA-140), or new items capturing is enabled by `captureNewItems(yes)`[>>](#_Av5okjWA-134).
 
 <u>**Arguments**</u>
 
@@ -2568,7 +2568,7 @@ Description
 <tr>
 <td>
 
-`hashes`[>>](#_Av1J43qP-9)
+`hashes`[>>](#_Av5okjWA-141)
 
 </td><td>
 
@@ -2584,15 +2584,15 @@ A dictionary of the found items.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-9"></a>
+<a name="_Av5okjWA-141"></a>
 ###### hashes ######
 
 Array of strings. The list of hashes to retrieve the items by.
 
-<a name="_Av1J43qP-8"></a>
+<a name="_Av5okjWA-140"></a>
 ###### setPrecapturedItems(dictionary) ######
 
-Prepopulate the cache with the given items. They will be available via `getItems(hashes)`[>>](#_Av1J43qP-6)).
+Prepopulate the cache with the given items. They will be available via `getItems(hashes)`[>>](#_Av5okjWA-138)).
 
 <u>**Arguments**</u>
 
@@ -2611,12 +2611,12 @@ Description
 <tr>
 <td>
 
-`dictionary`[>>](#_Av1J43qP-18)
+`dictionary`[>>](#_Av5okjWA-150)
 
 </td><td>
 
 An object that works as dictionary, with hash as key and the cached code fragment string as value (similarly to return value of
-`getItems(hashes)`[>>](#_Av1J43qP-6)).
+`getItems(hashes)`[>>](#_Av5okjWA-138)).
 
 
 </td>
@@ -2629,19 +2629,19 @@ Self, allowing method chaining
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-18"></a>
+<a name="_Av5okjWA-150"></a>
 ###### dictionary ######
 
 An object that works as dictionary, with hash as key and the cached code fragment string as value (similarly to return value of
-`getItems(hashes)`[>>](#_Av1J43qP-6)).
+`getItems(hashes)`[>>](#_Av5okjWA-138)).
 
 If called repeatedly, the method adds new items to the existing ones (overwriting the ones with same hash).
 
-<a name="_Av1J43qP-11"></a>
+<a name="_Av5okjWA-143"></a>
 ###### setItem(hash, codeString) ######
 
-The synchronous implementation of `.setItem(hash, codeString)`[>>](#_Av1Csx6x-9). Does nothing by default, unless new items capturing is enabled via
-`captureNewItems(yes)`[>>](#_Av1J43qP-2), otherwise adds the item to precaptured cpntent. Keep in mind that the cache is transient, so in order to make sense
+The synchronous implementation of `.setItem(hash, codeString)`[>>](#_Av5okjWA-115). Does nothing by default, unless new items capturing is enabled via
+`captureNewItems(yes)`[>>](#_Av5okjWA-134), otherwise adds the item to precaptured cpntent. Keep in mind that the cache is transient, so in order to make sense
 of this mode the captured content should be saved explicitly.
 
 <u>**Arguments**</u>
@@ -2661,7 +2661,7 @@ Description
 <tr>
 <td>
 
-`hash`[>>](#_Av1J43qP-13)
+`hash`[>>](#_Av5okjWA-145)
 
 </td><td>
 
@@ -2672,7 +2672,7 @@ The code fragment hash.
 <tr>
 <td>
 
-`codeString`[>>](#_Av1J43qP-14)
+`codeString`[>>](#_Av5okjWA-146)
 
 </td><td>
 
@@ -2684,17 +2684,17 @@ The actual code fragment to store under the given hash key.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-13"></a>
+<a name="_Av5okjWA-145"></a>
 ###### hash ######
 
 The code fragment hash.
 
-<a name="_Av1J43qP-14"></a>
+<a name="_Av5okjWA-146"></a>
 ###### codeString ######
 
 The actual code fragment to store under the given hash key.
 
-<a name="_Av1J43qP-20"></a>
+<a name="_Av5okjWA-152"></a>
 ###### nodejsLoadPrecapturedItemsFromFileSync(filePath[, suppressWarning]) ######
 
 [Node.js only] Prepopulate the cache from the given JSON file. In case of failure, the method will work as no-op, but a warning will be logged.
@@ -2716,7 +2716,7 @@ Description
 <tr>
 <td>
 
-`filePath`[>>](#_Av1J43qP-24)
+`filePath`[>>](#_Av5okjWA-156)
 
 </td><td>
 
@@ -2727,7 +2727,7 @@ String. Path to the JSON file.
 <tr>
 <td>
 
-`suppressWarning`[>>](#_Av1J43qP-25)
+`suppressWarning`[>>](#_Av5okjWA-157)
 
 </td><td>
 
@@ -2742,27 +2742,27 @@ Bool, optional (default is `false`). Set to `true` if you need to suppress the w
 Self, allowing method chaining
 
 The JSON file is expected to contain hash object with hashes as the keys and strings for the values.
-One of methods to generate such file is `nodejsSaveCapturedItemsToFileSync(filePath)`[>>](#_Av1J43qP-22)/`async nodejsSaveCapturedItemsToFileAsync(filePath)`[>>](#_Av1J43qP-23).
+One of methods to generate such file is `nodejsSaveCapturedItemsToFileSync(filePath)`[>>](#_Av5okjWA-154)/`async nodejsSaveCapturedItemsToFileAsync(filePath)`[>>](#_Av5okjWA-155).
 
 If called repeatedly, the method adds new items to the existing ones (overwriting the ones with same hash).
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-24"></a>
+<a name="_Av5okjWA-156"></a>
 ###### filePath ######
 
 String. Path to the JSON file.
 
-<a name="_Av1J43qP-25"></a>
+<a name="_Av5okjWA-157"></a>
 ###### suppressWarning ######
 
 Bool, optional (default is `false`). Set to `true` if you need to suppress the warning in case of file reading error.
 
-<a name="_Av1J43qP-22"></a>
+<a name="_Av5okjWA-154"></a>
 ###### nodejsSaveCapturedItemsToFileSync(filePath) ######
 
-[Node.js only] Save the currently captured items into a JSON file, which can be later used with `nodejsLoadPrecapturedItemsFromFileSync(filePath[, suppressWarning])`[>>](#_Av1J43qP-20)/
-`async nodejsLoadPrecapturedItemsFromFileAsync(filePath[, suppressWarning])`[>>](#_Av1J43qP-27). You must enable `captureNewItems(yes)`[>>](#_Av1J43qP-2) before using this method.
+[Node.js only] Save the currently captured items into a JSON file, which can be later used with `nodejsLoadPrecapturedItemsFromFileSync(filePath[, suppressWarning])`[>>](#_Av5okjWA-152)/
+`async nodejsLoadPrecapturedItemsFromFileAsync(filePath[, suppressWarning])`[>>](#_Av5okjWA-159). You must enable `captureNewItems(yes)`[>>](#_Av5okjWA-134) before using this method.
 
 <u>**Arguments**</u>
 
@@ -2781,7 +2781,7 @@ Description
 <tr>
 <td>
 
-`filePath`[>>](#_Av1J43qP-50)
+`filePath`[>>](#_Av5okjWA-181)
 
 </td><td>
 
@@ -2797,15 +2797,15 @@ String. Path to the target JSON file.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-50"></a>
+<a name="_Av5okjWA-181"></a>
 ###### filePath ######
 
 String. Path to the target JSON file.
 
-<a name="_Av1J43qP-23"></a>
+<a name="_Av5okjWA-155"></a>
 ###### async nodejsSaveCapturedItemsToFileAsync(filePath) ######
 
-[Node.js only] The async counterpart of `nodejsSaveCapturedItemsToFileSync(filePath)`[>>](#_Av1J43qP-22). Works exacty the same, but returns asynchronously.
+[Node.js only] The async counterpart of `nodejsSaveCapturedItemsToFileSync(filePath)`[>>](#_Av5okjWA-154). Works exacty the same, but returns asynchronously.
 
 <u>**Arguments**</u>
 
@@ -2824,7 +2824,7 @@ Description
 <tr>
 <td>
 
-`filePath`[>>](#_Av1J43qP-53)
+`filePath`[>>](#_Av5okjWA-184)
 
 </td><td>
 
@@ -2840,15 +2840,15 @@ String. Path to the target JSON file.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-53"></a>
+<a name="_Av5okjWA-184"></a>
 ###### filePath ######
 
 String. Path to the target JSON file.
 
-<a name="_Av1J43qP-27"></a>
+<a name="_Av5okjWA-159"></a>
 ###### async nodejsLoadPrecapturedItemsFromFileAsync(filePath[, suppressWarning]) ######
 
-[Node.js only] The async counterpart of `nodejsLoadPrecapturedItemsFromFileSync(filePath[, suppressWarning])`[>>](#_Av1J43qP-20). Works exacty the same, but returns asynchronously.
+[Node.js only] The async counterpart of `nodejsLoadPrecapturedItemsFromFileSync(filePath[, suppressWarning])`[>>](#_Av5okjWA-152). Works exacty the same, but returns asynchronously.
 
 <u>**Arguments**</u>
 
@@ -2867,7 +2867,7 @@ Description
 <tr>
 <td>
 
-`filePath`[>>](#_Av1J43qP-29)
+`filePath`[>>](#_Av5okjWA-161)
 
 </td><td>
 
@@ -2878,7 +2878,7 @@ String. Path to the JSON file.
 <tr>
 <td>
 
-`suppressWarning`[>>](#_Av1J43qP-30)
+`suppressWarning`[>>](#_Av5okjWA-162)
 
 </td><td>
 
@@ -2894,21 +2894,21 @@ Self, allowing method chaining (but note it is an async return)
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-29"></a>
+<a name="_Av5okjWA-161"></a>
 ###### filePath ######
 
 String. Path to the JSON file.
 
-<a name="_Av1J43qP-30"></a>
+<a name="_Av5okjWA-162"></a>
 ###### suppressWarning ######
 
 Bool, optional (default is `false`). Set to `true` if you need to suppress the warning in case of file reading error.
 
-<a name="_Av1J43qP-35"></a>
+<a name="_Av5okjWA-167"></a>
 ###### cacheModified() ######
 
 Returns true if new items were added to the cache, or existing have been modified, after creating blank cache or initializing it with
-`setPrecapturedItems(dictionary)`[>>](#_Av1J43qP-8). New items capturing must be enabled by `captureNewItems(yes)`[>>](#_Av1J43qP-2) in order for this to work.
+`setPrecapturedItems(dictionary)`[>>](#_Av5okjWA-140). New items capturing must be enabled by `captureNewItems(yes)`[>>](#_Av5okjWA-134) in order for this to work.
 
 <u>**Returns:**</u>
 
@@ -2916,35 +2916,35 @@ Returns true if new items were added to the cache, or existing have been modifie
 
 Use this method if you fetch cache from a persistent storage that is meant to be up to date with the current code state, to check if an update is needed.
 
-<a name="_Av1J43qP-38"></a>
+<a name="_Av5okjWA-170"></a>
 ###### prune() ######
 
-Delete all items from the cache that have been not updated or requested up to this point. May result in modification of cache (as returned by `cacheModified()`[>>](#_Av1J43qP-35)).
-`cacheModified()`[>>](#_Av1J43qP-35)).
+Delete all items from the cache that have been not updated or requested up to this point. May result in modification of cache (as returned by `cacheModified()`[>>](#_Av5okjWA-167)).
+`cacheModified()`[>>](#_Av5okjWA-167)).
 
 <u>**Returns:**</u>
 
 Self, allowing method chaining (but note it is an async return)
 
 If you are updating the external storage with the cache, invoke the methods in the sequence after all wrappings intended for this cache are processed:
-1) `prune()`[>>](#_Av1J43qP-38), 2) `cacheModified()`[>>](#_Av1J43qP-35) to verify if the cache was modified, 3) if modified, then update the storage
-(for example via `nodejsSaveCapturedItemsToFileSync(filePath)`[>>](#_Av1J43qP-22)/`async nodejsSaveCapturedItemsToFileAsync(filePath)`[>>](#_Av1J43qP-23)).
+1) `prune()`[>>](#_Av5okjWA-170), 2) `cacheModified()`[>>](#_Av5okjWA-167) to verify if the cache was modified, 3) if modified, then update the storage
+(for example via `nodejsSaveCapturedItemsToFileSync(filePath)`[>>](#_Av5okjWA-154)/`async nodejsSaveCapturedItemsToFileAsync(filePath)`[>>](#_Av5okjWA-155)).
 
-<a name="_Av1J43qP-42"></a>
+<a name="_Av5okjWA-173"></a>
 ###### getCapturedJson() ######
 
 Returns the items captured into the cache, along with unchanged prepopulated ones, stringified into JSON object. De-stringified back, object from this JSON
-can be used with `setPrecapturedItems(dictionary)`[>>](#_Av1J43qP-8). You must enable `captureNewItems(yes)`[>>](#_Av1J43qP-2) before using this method.
+can be used with `setPrecapturedItems(dictionary)`[>>](#_Av5okjWA-140). You must enable `captureNewItems(yes)`[>>](#_Av5okjWA-134) before using this method.
 
 <u>**Returns:**</u>
 
 String, the cache as stringified JSON.
 
-<a name="_Av1J43qP-45"></a>
+<a name="_Av5okjWA-176"></a>
 ###### browserDownloadCapturedJson(name) ######
 
 [Browser only] Issues a download request with the cache serialized into JSON file, which can be deserialized back and used with
-`setPrecapturedItems(dictionary)`[>>](#_Av1J43qP-8). You also can specify the name for the downloadable file.
+`setPrecapturedItems(dictionary)`[>>](#_Av5okjWA-140). You also can specify the name for the downloadable file.
 
 <u>**Arguments**</u>
 
@@ -2963,7 +2963,7 @@ Description
 <tr>
 <td>
 
-`name`[>>](#_Av1J43qP-47)
+`name`[>>](#_Av5okjWA-178)
 
 </td><td>
 
@@ -2979,30 +2979,30 @@ String, name for the downloaded file (with no ".json" extension)
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-47"></a>
+<a name="_Av5okjWA-178"></a>
 ###### name ######
 
 String, name for the downloaded file (with no ".json" extension)
 
-<a name="_Av1J43qP-55"></a>
+<a name="_Av5okjWA-186"></a>
 ##### LocalStorageSyncCache #####
 
 A synchronous cache that caches items in [browser's local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
 Only can be used in browser environment.
 
 It is a synchronous cache, which makes it more convenient, but due to limitations on local storage it may be not suitable if the total amount of wrapped code
-on the page spans multiple megabytes. In such cases, consider using `IndexedDbAsyncCache`[>>](#_Av1J43qP-56).
+on the page spans multiple megabytes. In such cases, consider using `IndexedDbAsyncCache`[>>](#_Av5okjWA-187).
 
 <u>**Properties**</u>
 
-<a name="_Av1J43qP-69"></a>
+<a name="_Av5okjWA-200"></a>
 ###### commit [placeholder] ######
 
 Placeholder for `async commit()` method, filled after first use of the cache with async strategy.
 
 <u>**Methods**</u>
 
-<a name="_Av1J43qP-57"></a>
+<a name="_Av5okjWA-188"></a>
 ###### LocalStorageSyncCache(name) [constructor] ######
 
 Construct the instance of `LocalStorageSyncCache`. Use via `new QUADSUGAR.LocalStorageSyncCache(...)` or `QUADSUGAR.LocalStorageSyncCache(...)`.
@@ -3024,7 +3024,7 @@ Description
 <tr>
 <td>
 
-`name`[>>](#_Av1J43qP-59)
+`name`[>>](#_Av5okjWA-190)
 
 </td><td>
 
@@ -3041,16 +3041,16 @@ specific local storage keys, and must differ from names you specified for other 
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-59"></a>
+<a name="_Av5okjWA-190"></a>
 ###### name ######
 
 String. Prefix for local storage key names that will be used for this cache - should guarantee no conflict occurs with your own application
 specific local storage keys, and must differ from names you specified for other `LocalStorageSyncCache`-s, if you use multiple ones per application.
 
-<a name="_Av1J43qP-61"></a>
+<a name="_Av5okjWA-192"></a>
 ###### getItems(hashes) ######
 
-The synchronous implementation of `.getItems(hashes)`[>>](#_Av1CzoeF-2).
+The synchronous implementation of `.getItems(hashes)`[>>](#_Av5okjWA-121).
 
 <u>**Arguments**</u>
 
@@ -3069,7 +3069,7 @@ Description
 <tr>
 <td>
 
-`hashes`[>>](#_Av1J43qP-63)
+`hashes`[>>](#_Av5okjWA-194)
 
 </td><td>
 
@@ -3085,15 +3085,15 @@ A dictionary of the found items.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-63"></a>
+<a name="_Av5okjWA-194"></a>
 ###### hashes ######
 
 Array of strings. The list of hashes to retrieve the items by.
 
-<a name="_Av1J43qP-65"></a>
+<a name="_Av5okjWA-196"></a>
 ###### setItem(hash, codeString) ######
 
-The synchronous implementation of `.setItem(hash, codeString)`[>>](#_Av1Csx6x-9).
+The synchronous implementation of `.setItem(hash, codeString)`[>>](#_Av5okjWA-115).
 
 <u>**Arguments**</u>
 
@@ -3112,7 +3112,7 @@ Description
 <tr>
 <td>
 
-`hash`[>>](#_Av1J43qP-67)
+`hash`[>>](#_Av5okjWA-198)
 
 </td><td>
 
@@ -3123,7 +3123,7 @@ The code fragment hash.
 <tr>
 <td>
 
-`codeString`[>>](#_Av1J43qP-68)
+`codeString`[>>](#_Av5okjWA-199)
 
 </td><td>
 
@@ -3135,17 +3135,17 @@ The actual code fragment to store under the given hash key.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-67"></a>
+<a name="_Av5okjWA-198"></a>
 ###### hash ######
 
 The code fragment hash.
 
-<a name="_Av1J43qP-68"></a>
+<a name="_Av5okjWA-199"></a>
 ###### codeString ######
 
 The actual code fragment to store under the given hash key.
 
-<a name="_Av1J43qP-71"></a>
+<a name="_Av5okjWA-202"></a>
 ###### clear() ######
 
 Clear all items from the cache.
@@ -3154,7 +3154,7 @@ Clear all items from the cache.
 
 Self, allowing method chaining
 
-<a name="_Av1J43qP-74"></a>
+<a name="_Av5okjWA-205"></a>
 ###### prune() ######
 
 Clears all keys from the cache that have been not updated or requested up to this point. Call after all of the planned wraps have finished to keep the cache size under control.
@@ -3163,7 +3163,7 @@ Clears all keys from the cache that have been not updated or requested up to thi
 
 Self, allowing method chaining
 
-<a name="_Av1J43qP-56"></a>
+<a name="_Av5okjWA-187"></a>
 ##### IndexedDbAsyncCache #####
 
 An asynchronous cache that caches items in [browser's IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API).
@@ -3173,14 +3173,14 @@ If your total amount of wrapped code is large enough, it is the recommended cach
 
 <u>**Properties**</u>
 
-<a name="_Av1J43qP-89"></a>
+<a name="_Av5okjWA-220"></a>
 ###### commit [placeholder] ######
 
 Placeholder for `async commit()` method, filled after first use of the cache with async strategy.
 
 <u>**Methods**</u>
 
-<a name="_Av1J43qP-77"></a>
+<a name="_Av5okjWA-208"></a>
 ###### IndexedDbAsyncCache(name) [constructor] ######
 
 Construct the instance of `IndexedDbAsyncCache`. Use via `new QUADSUGAR.IndexedDbAsyncCache(...)` or `QUADSUGAR.IndexedDbAsyncCache(...)`.
@@ -3202,7 +3202,7 @@ Description
 <tr>
 <td>
 
-`name`[>>](#_Av1J43qP-79)
+`name`[>>](#_Av5okjWA-210)
 
 </td><td>
 
@@ -3219,16 +3219,16 @@ specified for other `IndexedDbAsyncCache`-s, if you use multiple ones per applic
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-79"></a>
+<a name="_Av5okjWA-210"></a>
 ###### name ######
 
 String. Name to use for cache IDB - should be different from names of your application specific IDBs, if any, and from names you
 specified for other `IndexedDbAsyncCache`-s, if you use multiple ones per application.
 
-<a name="_Av1J43qP-81"></a>
+<a name="_Av5okjWA-212"></a>
 ###### async getItems(hashes) ######
 
-The asynchronous implementation of `.getItems(hashes)`[>>](#_Av1CzoeF-2).
+The asynchronous implementation of `.getItems(hashes)`[>>](#_Av5okjWA-121).
 
 <u>**Arguments**</u>
 
@@ -3247,7 +3247,7 @@ Description
 <tr>
 <td>
 
-`hashes`[>>](#_Av1J43qP-83)
+`hashes`[>>](#_Av5okjWA-214)
 
 </td><td>
 
@@ -3263,15 +3263,15 @@ A dictionary of the found items.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-83"></a>
+<a name="_Av5okjWA-214"></a>
 ###### hashes ######
 
 Array of strings. The list of hashes to retrieve the items by.
 
-<a name="_Av1J43qP-85"></a>
+<a name="_Av5okjWA-216"></a>
 ###### async setItem(hash, codeString) ######
 
-The asynchronous implementation of `.setItem(hash, codeString)`[>>](#_Av1Csx6x-9).
+The asynchronous implementation of `.setItem(hash, codeString)`[>>](#_Av5okjWA-115).
 
 <u>**Arguments**</u>
 
@@ -3290,7 +3290,7 @@ Description
 <tr>
 <td>
 
-`hash`[>>](#_Av1J43qP-87)
+`hash`[>>](#_Av5okjWA-218)
 
 </td><td>
 
@@ -3301,7 +3301,7 @@ The code fragment hash.
 <tr>
 <td>
 
-`codeString`[>>](#_Av1J43qP-88)
+`codeString`[>>](#_Av5okjWA-219)
 
 </td><td>
 
@@ -3313,17 +3313,17 @@ The actual code fragment to store under the given hash key.
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av1J43qP-87"></a>
+<a name="_Av5okjWA-218"></a>
 ###### hash ######
 
 The code fragment hash.
 
-<a name="_Av1J43qP-88"></a>
+<a name="_Av5okjWA-219"></a>
 ###### codeString ######
 
 The actual code fragment to store under the given hash key.
 
-<a name="_Av1J43qP-91"></a>
+<a name="_Av5okjWA-222"></a>
 ###### clear() ######
 
 Clear all items from the cache.
@@ -3332,7 +3332,7 @@ Clear all items from the cache.
 
 Self, allowing method chaining (but note it is an async return)
 
-<a name="_Av1J43qP-94"></a>
+<a name="_Av5okjWA-225"></a>
 ###### async prune() ######
 
 Clears all keys from the cache that have been not updated or requested up to this point. Call after all of the planned wraps have finished to keep the cache size under control.
@@ -3341,10 +3341,10 @@ Clears all keys from the cache that have been not updated or requested up to thi
 
 Self, allowing method chaining (but note it is an async return)
 
-<a name="_Av1J43qP-97"></a>
+<a name="_Av5okjWA-228"></a>
 ###### async close() ######
 
-Close the cache backing IDB. Call after `async prune()`[>>](#_Av1J43qP-94) to flush the DB and release its connection resources. No usage of the cache object is expected after that.
+Close the cache backing IDB. Call after `async prune()`[>>](#_Av5okjWA-225) to flush the DB and release its connection resources. No usage of the cache object is expected after that.
 Although it is still possible, but any usage after closing will automatically re-open the DB, and you will have to close it again, so better be consistent.
 
 

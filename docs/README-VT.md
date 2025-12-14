@@ -7,28 +7,28 @@ It comes packaged with Quadsugar, but is technically independent, so can be easi
 ---
 
 
-- ValueType[>>](#_Av2HZaig-2)
-  - Introduction[>>](#_Av2HZaig-4)
-    - What it is and is not[>>](#_Av2L1vez-1)
-  - Value-type concepts[>>](#_Av2L1vez-3)
-  - Value-type objects creation[>>](#_Av2L1vez-6)
-  - Value-type values operations[>>](#_Av2L1vez-9)
-  - MapVTK[>>](#_Av2L1vez-12)
-  - Quadsugar bonus[>>](#_Av2L1vez-15)
-  - Reference[>>](#_Av2L1vez-18)
-    - ValueType[>>](#_Av2L7rhB-1)
-    - Schema literals grammar[>>](#_Av2X6m5W-1)
+- ValueType[>>](#_Av5okjWA-231)
+  - Introduction[>>](#_Av5okjWA-233)
+    - What it is and is not[>>](#_Av5okjWA-236)
+  - Value-type concepts[>>](#_Av5okjWA-238)
+  - Value-type objects creation[>>](#_Av5okjWA-241)
+  - Value-type values operations[>>](#_Av5okjWA-244)
+  - MapVTK[>>](#_Av5okjWA-247)
+  - Quadsugar bonus[>>](#_Av5okjWA-250)
+  - Reference[>>](#_Av5okjWA-253)
+    - ValueType[>>](#_Av5okjWA-256)
+    - Schema literals grammar[>>](#_Av5okjWA-261)
 
 ---
 
-<a name="_Av2HZaig-2"></a>
+<a name="_Av5okjWA-231"></a>
 # ValueType #
 
 ValueType (VT) is a JavaScript library focused on idea of value-type objects that can be compared and used as map keys using value-equality comparison logic.
 
 It comes packaged with Quadsugar, but is technically independent, so can be easily debundled and used on its own.
 
-<a name="_Av2HZaig-4"></a>
+<a name="_Av5okjWA-233"></a>
 ## Introduction ##
 
 One of challenges with standard JavaScript built-in `Map` and `Set` classes is that they only allow primitive values and objects compared by reference as the keys.
@@ -44,7 +44,7 @@ require any extra syntax or polyfills on top of standard ES 2019, and utilises s
 VT can be used both in browser environment:
 ```
 ...
-<script src="https://sbtrn-devil.github.io/quadsugar/valuetype-1.0.0.js"></script>
+<script src="https://sbtrn-devil.github.io/quadsugar/valuetype-1.0.1.js"></script>
 <!-- but better download it and put nearby, or even paste inline, in order to reduce external depencencies and prevent leftpad-like conditions -->
 ...
 <script>
@@ -75,7 +75,7 @@ var v = ValueType.New `{ x: ${1}, y: ${2} }`;
 ...
 ```
 
-<a name="_Av2L1vez-1"></a>
+<a name="_Av5okjWA-236"></a>
 ### What it is and is not ###
 
 VT is designed with the most specific need in mind: ability to have map with composite keys of known-ahead structure and to simplify specification of such keys. That doesn't mean it can't be used creatively
@@ -94,7 +94,7 @@ immutability is a part of __Functional Anti Programming Cargo Cult (FAPCC)__, wh
 
 Trying this, you will probably notice these objects handling are quite inconvenient from this use case perspective. That's because it is, similarly to above, not an intended use case.
 
-<a name="_Av2L1vez-3"></a>
+<a name="_Av5okjWA-238"></a>
 ## Value-type concepts ##
 
 A __value-type value__ is either a primitive value (`undefined`, `null`, boolean, string, number, bigint, symbol), or a __value-type object__ (VTO), that is an array or an object that meets the following requirements:
@@ -113,7 +113,7 @@ Value-type values are meant to be compared by __value-type equality__:
     - they have same shallow schema (that is, their sets of own keys are equal as unordered sets),
     - values by each key in their shallow schemas are correspondingly equal per value-type equality.
 
-<a name="_Av2L1vez-6"></a>
+<a name="_Av5okjWA-241"></a>
 ## Value-type objects creation ##
 
 The VTOs can be created with several methods that are inherently and intentionelly different from creating "plain" JS objects.
@@ -266,14 +266,14 @@ Pre-declared destructuring schemas do not introduce any new types - it is just a
 VTO and their non-VTO counterparts. All that matters is the set of members and the structure they make up.
 Schemas that expand to the same set of members deliver exactly the same VTO structures, and the same as the same set of members directly listed inline in a set schema.
 
-<a name="_Av2L1vez-9"></a>
+<a name="_Av5okjWA-244"></a>
 ## Value-type values operations ##
 
 Value-type values are subject to value-type specific operations.
 
 ## Value-type equality check
 
-`ValueType.equals(v1, v2)` returns true if (and false unless) `v1` and `v2` are value-type equal, in the definition of value-type equality as stated in `Value-type concepts`[>>](#_Av2L1vez-3).
+`ValueType.equals(v1, v2)` returns true if (and false unless) `v1` and `v2` are value-type equal, in the definition of value-type equality as stated in `Value-type concepts`[>>](#_Av5okjWA-238).
 In contexts that assume use of value-type values, you should always use value-type equality comparison, as value-type equal objects may or may be not equal by JS identity.
 
 By definition, order of the keys in VTO construction schemas and method of their specificaiton does not matter - only the set of keys and their values:
@@ -342,9 +342,9 @@ is very use-case specific - so it is up to the user to implement the particular 
 
 ## Value-type keyed map
 
-Built-in JS `Map` and `Set` are not aware of value-type values and won't handle them correctly. VT provides a drop-in implementation of `Map` that you should use instead: `MapVTK`[>>](#_Av2L1vez-12)
+Built-in JS `Map` and `Set` are not aware of value-type values and won't handle them correctly. VT provides a drop-in implementation of `Map` that you should use instead: `MapVTK`[>>](#_Av5okjWA-247)
 
-<a name="_Av2L1vez-12"></a>
+<a name="_Av5okjWA-247"></a>
 ## MapVTK ##
 
 `MapVTK` (VTK stands for Value-Type Keys) is counterpart of `Map` that can handle value-type keys. It contains the same methods as standard `Map` (plus several extras), and behaves exactly the same
@@ -356,7 +356,7 @@ end nodes, from top of the structure down to primitive and non-VTO values, plus 
 
 VT only provides counterpart to the `Map`, but not to the `Set`. The reason being, a set is quite easily implemented on top of map, especially with JS `Set` interface which is nearly identical to `Map`.
 
-<a name="_Av2L1vez-15"></a>
+<a name="_Av5okjWA-250"></a>
 ## Quadsugar bonus ##
 
 VT is independent from Quadsugar, but it can provide some bonuses if you use them together.
@@ -392,12 +392,12 @@ QUADSUGAR
 
 Any of `New`, `From`, `Schema`, and `$` can be set to null or false to not expose tags for these particular items in the QS-wrapped code.
 
-<a name="_Av2L1vez-18"></a>
+<a name="_Av5okjWA-253"></a>
 ## Reference ##
 
 Reference to the VT API.
 
-<a name="_Av2L7rhB-1"></a>
+<a name="_Av5okjWA-256"></a>
 ### ValueType ###
 
 VT's main namespace. In browser, it is always put under `ValueType` global variable name. In Node.js, it is directly the import from `require('quadsugar/valuetype')` which can be assigned
@@ -420,11 +420,11 @@ Description
 <tr>
 <td>
 
-`Schema`[>>](#_Av2L7rhB-3)
+`Schema`[>>](#_Av5okjWA-258)
 
 </td><td>
 
-String template tag for constructing a standalone destructuring schema. See `Schema literals grammar`[>>](#_Av2X6m5W-1) for more insight into the schema grammar.
+String template tag for constructing a standalone destructuring schema. See `Schema literals grammar`[>>](#_Av5okjWA-261) for more insight into the schema grammar.
 `:`, `,` and `...` punctuators are ignored, and only used for readability.
 
 
@@ -433,11 +433,11 @@ String template tag for constructing a standalone destructuring schema. See `Sch
 <tr>
 <td>
 
-`New`[>>](#_Av2L7rhB-5)
+`New`[>>](#_Av5okjWA-271)
 
 </td><td>
 
-String template tag for creating a new VTO using inline set schema. See `Schema literals grammar`[>>](#_Av2X6m5W-1) for more insight into the schema grammar.
+String template tag for creating a new VTO using inline set schema. See `Schema literals grammar`[>>](#_Av5okjWA-261) for more insight into the schema grammar.
 `:`, `,` and `...` punctuators are ignored, and only used for readability.
 
 
@@ -446,11 +446,11 @@ String template tag for creating a new VTO using inline set schema. See `Schema 
 <tr>
 <td>
 
-`From(vto)`[>>](#_Av2L7rhB-7)
+`From(vto)`[>>](#_Av5okjWA-273)
 
 </td><td>
 
-String template tag for creating a new VTO based on an existing VTO using inline edit schema. See `Schema literals grammar`[>>](#_Av2X6m5W-1) for more insight into the schema grammar.
+String template tag for creating a new VTO based on an existing VTO using inline edit schema. See `Schema literals grammar`[>>](#_Av5okjWA-261) for more insight into the schema grammar.
 `:`, `,` and `...` punctuators are ignored, and only used for readability.
 
 
@@ -459,7 +459,7 @@ String template tag for creating a new VTO based on an existing VTO using inline
 <tr>
 <td>
 
-`.equals(v1, v2)`[>>](#_Av2L7rhB-9)
+`.equals(v1, v2)`[>>](#_Av5okjWA-276)
 
 </td><td>
 
@@ -471,7 +471,7 @@ Non-VTO objects are only value-type equal if they equal in JS `===` sense.
 <tr>
 <td>
 
-`.comparator(v1, v2 [, differNonVto])`[>>](#_Av2L7rhB-11)
+`.comparator(v1, v2 [, differNonVto])`[>>](#_Av5okjWA-281)
 
 </td><td>
 
@@ -483,7 +483,7 @@ Non-VTO objects are considered order-equal, unless you specify `differNonVto` pa
 <tr>
 <td>
 
-`.isValue(v)`[>>](#_Av2L7rhB-13)
+`.isValue(v)`[>>](#_Av5okjWA-287)
 
 </td><td>
 
@@ -494,7 +494,7 @@ Check if a given value is value-type. Returns true for primitives and VTOs.
 <tr>
 <td>
 
-`.isValueTypeObject(v)`[>>](#_Av2L7rhB-15)
+`.isValueTypeObject(v)`[>>](#_Av5okjWA-291)
 
 </td><td>
 
@@ -505,7 +505,7 @@ Check if a given value is a VTO.
 <tr>
 <td>
 
-`MapVTK`[>>](#_Av2L7rhB-17)
+`MapVTK`[>>](#_Av5okjWA-295)
 
 </td><td>
 
@@ -517,7 +517,7 @@ A drop-in replacement to standard JS `Map` that uses value-type equality rules f
 <tr>
 <td>
 
-`.quadsugarTags(qsNSO [, tagsDict])`[>>](#_Av2L7rhB-47)
+`.quadsugarTags(qsNSO [, tagsDict])`[>>](#_Av5okjWA-348)
 
 </td><td>
 
@@ -530,10 +530,10 @@ Creates dictionary of VT support static tags for Quadsugar's `.useStaticTags`. A
 
 <u>**Members (detailed)**</u>
 
-<a name="_Av2L7rhB-3"></a>
+<a name="_Av5okjWA-258"></a>
 #### Schema ####
 
-String template tag for constructing a standalone destructuring schema. See `Schema literals grammar`[>>](#_Av2X6m5W-1) for more insight into the schema grammar.
+String template tag for constructing a standalone destructuring schema. See `Schema literals grammar`[>>](#_Av5okjWA-261) for more insight into the schema grammar.
 `:`, `,` and `...` punctuators are ignored, and only used for readability.
 
 <u>**Members**</u>
@@ -553,11 +553,11 @@ Description
 <tr>
 <td>
 
-`.fromValue(value) [Schema instance]`[>>](#_Av2RjybR-1)
+`.fromValue(value) [Schema instance]`[>>](#_Av5okjWA-262)
 
 </td><td>
 
-Constructs VTO from the given value destructured per this schema. The value, or any of its deeper level members, does not have to be a VTO, but it must fit the schema (see `.fits(value) [Schema instance]`[>>](#_Av2RjybR-3)),
+Constructs VTO from the given value destructured per this schema. The value, or any of its deeper level members, does not have to be a VTO, but it must fit the schema (see `.fits(value) [Schema instance]`[>>](#_Av5okjWA-264)),
 otherwise runtime error will occur.
 
 </td>
@@ -565,11 +565,11 @@ otherwise runtime error will occur.
 <tr>
 <td>
 
-`.fits(value) [Schema instance]`[>>](#_Av2RjybR-3)
+`.fits(value) [Schema instance]`[>>](#_Av5okjWA-264)
 
 </td><td>
 
-Checks whether the given value fits the schema, that is, it can be safely and meaningfully destructured via the schema's `.fromValue(value) [Schema instance]`[>>](#_Av2RjybR-1) method.
+Checks whether the given value fits the schema, that is, it can be safely and meaningfully destructured via the schema's `.fromValue(value) [Schema instance]`[>>](#_Av5okjWA-262) method.
 The schema defines the required set of members, and only these members will go into the resulting VTO after the value destructuring. The value can have extra members that are not mentioned in the schema -
 such ones will be ignored on destructuring and are not counted when checking the fitting.
 
@@ -590,10 +590,10 @@ Result of ``ValueType.Schema `...` `` is schema instance object, whose methods a
 
 <u>**Members (detailed)**</u>
 
-<a name="_Av2RjybR-1"></a>
+<a name="_Av5okjWA-262"></a>
 ##### .fromValue(value) [Schema instance] #####
 
-Constructs VTO from the given value destructured per this schema. The value, or any of its deeper level members, does not have to be a VTO, but it must fit the schema (see `.fits(value) [Schema instance]`[>>](#_Av2RjybR-3)),
+Constructs VTO from the given value destructured per this schema. The value, or any of its deeper level members, does not have to be a VTO, but it must fit the schema (see `.fits(value) [Schema instance]`[>>](#_Av5okjWA-264)),
 otherwise runtime error will occur.
 
 <u>**Returns:**</u>
@@ -605,10 +605,10 @@ The resulting VTO
 `ReferenceError` (in most cases) if the value provided does not fit the schema. A limited mismatch (absence of member from a terminal schema node in the source value) may
 result in no error and setting this member to `undefined` instead, but deeper level mismatches will fail.
 
-<a name="_Av2RjybR-3"></a>
+<a name="_Av5okjWA-264"></a>
 ##### .fits(value) [Schema instance] #####
 
-Checks whether the given value fits the schema, that is, it can be safely and meaningfully destructured via the schema's `.fromValue(value) [Schema instance]`[>>](#_Av2RjybR-1) method.
+Checks whether the given value fits the schema, that is, it can be safely and meaningfully destructured via the schema's `.fromValue(value) [Schema instance]`[>>](#_Av5okjWA-262) method.
 The schema defines the required set of members, and only these members will go into the resulting VTO after the value destructuring. The value can have extra members that are not mentioned in the schema -
 such ones will be ignored on destructuring and are not counted when checking the fitting.
 
@@ -629,7 +629,7 @@ Description
 <tr>
 <td>
 
-`value`[>>](#_Av2RmCod-1)
+`value`[>>](#_Av5okjWA-269)
 
 </td><td>
 
@@ -645,21 +645,21 @@ true if the value fits the schema, false otherwise
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2RmCod-1"></a>
+<a name="_Av5okjWA-269"></a>
 ###### value ######
 
 The value to check. It does not have to be an object, but for non-objects the check result is always false.
 
 <u>**Methods**</u>
 
-##### .fromValue(value) [Schema instance] [>>](#_Av2RjybR-1) #####
+##### .fromValue(value) [Schema instance] [>>](#_Av5okjWA-262) #####
 
-##### .fits(value) [Schema instance] [>>](#_Av2RjybR-3) #####
+##### .fits(value) [Schema instance] [>>](#_Av5okjWA-264) #####
 
-<a name="_Av2L7rhB-5"></a>
+<a name="_Av5okjWA-271"></a>
 #### New ####
 
-String template tag for creating a new VTO using inline set schema. See `Schema literals grammar`[>>](#_Av2X6m5W-1) for more insight into the schema grammar.
+String template tag for creating a new VTO using inline set schema. See `Schema literals grammar`[>>](#_Av5okjWA-261) for more insight into the schema grammar.
 `:`, `,` and `...` punctuators are ignored, and only used for readability.
 
 ```
@@ -677,10 +677,10 @@ Result of ``ValueType.New `...` `` is the constructed VTO (array-type or object-
 (and also some standard technical, like `toString` (unless overridden by a data key), or `length` and array stuff for array-type VTO), the operations on them are implemented as static methods in `ValueType`
 namespace.
 
-<a name="_Av2L7rhB-7"></a>
+<a name="_Av5okjWA-273"></a>
 #### From(vto) ####
 
-String template tag for creating a new VTO based on an existing VTO using inline edit schema. See `Schema literals grammar`[>>](#_Av2X6m5W-1) for more insight into the schema grammar.
+String template tag for creating a new VTO based on an existing VTO using inline edit schema. See `Schema literals grammar`[>>](#_Av5okjWA-261) for more insight into the schema grammar.
 `:`, `,` and `...` punctuators are ignored, and only used for readability.
 
 <u>**Arguments**</u>
@@ -700,7 +700,7 @@ Description
 <tr>
 <td>
 
-`vto`[>>](#_Av2X6m5W-2)
+`vto`[>>](#_Av5okjWA-275)
 
 </td><td>
 
@@ -723,12 +723,12 @@ Result of ``ValueType.From(sourceVal) `...` `` is the _new_ VTO constructed from
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-2"></a>
+<a name="_Av5okjWA-275"></a>
 ##### vto #####
 
 The source value to base on, must be a VTO
 
-<a name="_Av2L7rhB-9"></a>
+<a name="_Av5okjWA-276"></a>
 #### .equals(v1, v2) ####
 
 Check two given values for value-type equality. Use instead of standard JS `==` to correctly compare values that may be VTOs.
@@ -751,7 +751,7 @@ Description
 <tr>
 <td>
 
-`v1`[>>](#_Av2X6m5W-3)
+`v1`[>>](#_Av5okjWA-278)
 
 </td><td>
 
@@ -762,7 +762,7 @@ First value to compare
 <tr>
 <td>
 
-`v2`[>>](#_Av2X6m5W-4)
+`v2`[>>](#_Av5okjWA-279)
 
 </td><td>
 
@@ -778,17 +778,17 @@ true if `v1` and `v2` are value-type equal, false otherwise
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-3"></a>
+<a name="_Av5okjWA-278"></a>
 ##### v1 #####
 
 First value to compare
 
-<a name="_Av2X6m5W-4"></a>
+<a name="_Av5okjWA-279"></a>
 ##### v2 #####
 
 Second value to compare
 
-<a name="_Av2L7rhB-11"></a>
+<a name="_Av5okjWA-281"></a>
 #### .comparator(v1, v2 [, differNonVto]) ####
 
 Compare two given values from perspective of their ordeting. The ordering is consistent within same JS session, but not persistent between different JS sessions.
@@ -811,7 +811,7 @@ Description
 <tr>
 <td>
 
-`v1`[>>](#_Av2X6m5W-6)
+`v1`[>>](#_Av5okjWA-283)
 
 </td><td>
 
@@ -822,7 +822,7 @@ First value to compare
 <tr>
 <td>
 
-`v2`[>>](#_Av2X6m5W-7)
+`v2`[>>](#_Av5okjWA-284)
 
 </td><td>
 
@@ -833,7 +833,7 @@ Second value to compare
 <tr>
 <td>
 
-`differNonVto`[>>](#_Av2X6m5W-8)
+`differNonVto`[>>](#_Av5okjWA-285)
 
 </td><td>
 
@@ -850,23 +850,23 @@ an integer: negative if `v1` is 'less than' `v2`, positive if `v1` is 'greater t
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-6"></a>
+<a name="_Av5okjWA-283"></a>
 ##### v1 #####
 
 First value to compare
 
-<a name="_Av2X6m5W-7"></a>
+<a name="_Av5okjWA-284"></a>
 ##### v2 #####
 
 Second value to compare
 
-<a name="_Av2X6m5W-8"></a>
+<a name="_Av5okjWA-285"></a>
 ##### differNonVto #####
 
 Bool, optional (default = false). If false, then non-VTO objects are considered 'equal'. If you need strict total ordering, specify this parameter to be `true`, but
 keep in mind that such comparison is more expensive and adds some memory overhead.
 
-<a name="_Av2L7rhB-13"></a>
+<a name="_Av5okjWA-287"></a>
 #### .isValue(v) ####
 
 Check if a given value is value-type. Returns true for primitives and VTOs.
@@ -888,7 +888,7 @@ Description
 <tr>
 <td>
 
-`v`[>>](#_Av2X6m5W-10)
+`v`[>>](#_Av5okjWA-289)
 
 </td><td>
 
@@ -904,12 +904,12 @@ true for primitives and VTOs, false for non-VTO objects and functions
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-10"></a>
+<a name="_Av5okjWA-289"></a>
 ##### v #####
 
 The value to check
 
-<a name="_Av2L7rhB-15"></a>
+<a name="_Av5okjWA-291"></a>
 #### .isValueTypeObject(v) ####
 
 Check if a given value is a VTO.
@@ -931,7 +931,7 @@ Description
 <tr>
 <td>
 
-`v`[>>](#_Av2X6m5W-12)
+`v`[>>](#_Av5okjWA-293)
 
 </td><td>
 
@@ -947,12 +947,12 @@ true if `v` is a non-null and is a VTO, false otherwise
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-12"></a>
+<a name="_Av5okjWA-293"></a>
 ##### v #####
 
 The value to check
 
-<a name="_Av2L7rhB-17"></a>
+<a name="_Av5okjWA-295"></a>
 #### MapVTK ####
 
 A drop-in replacement to standard JS `Map` that uses value-type equality rules for key comparison. `VTK` means "value-type keys", to specifically indicate the difference from standard `Map`.
@@ -974,7 +974,7 @@ Description
 <tr>
 <td>
 
-`MapVTK([iterable])`[>>](#_Av2L7rhB-19)
+`MapVTK([iterable])`[>>](#_Av5okjWA-297)
 
 </td><td>
 
@@ -986,7 +986,7 @@ Construct an instance of `MapVTK`. Can be used with `new` or as a plain function
 <tr>
 <td>
 
-`.get(key)`[>>](#_Av2L7rhB-21)
+`.get(key)`[>>](#_Av5okjWA-299)
 
 </td><td>
 
@@ -997,7 +997,7 @@ Get value from the map associated with the given key.
 <tr>
 <td>
 
-`.set(key, value)`[>>](#_Av2L7rhB-23)
+`.set(key, value)`[>>](#_Av5okjWA-303)
 
 </td><td>
 
@@ -1008,11 +1008,11 @@ Set (or replace existing) value in the map to associate with the given key.
 <tr>
 <td>
 
-`.replace(key, value)`[>>](#_Av2L7rhB-25)
+`.replace(key, value)`[>>](#_Av5okjWA-308)
 
 </td><td>
 
-Set (or replace existing) value in the map to associate with the given key. Unlike `.set(key, value)`[>>](#_Av2L7rhB-23), it returns previously associated value rather than the map instance,
+Set (or replace existing) value in the map to associate with the given key. Unlike `.set(key, value)`[>>](#_Av5okjWA-303), it returns previously associated value rather than the map instance,
 so you can use it for an 'exchange value' operation.
 
 </td>
@@ -1020,7 +1020,7 @@ so you can use it for an 'exchange value' operation.
 <tr>
 <td>
 
-`.delete(key)`[>>](#_Av2L7rhB-27)
+`.delete(key)`[>>](#_Av5okjWA-313)
 
 </td><td>
 
@@ -1031,11 +1031,11 @@ Delete a value in the map associated with the given key, if any exists.
 <tr>
 <td>
 
-`.remove(key)`[>>](#_Av2L7rhB-29)
+`.remove(key)`[>>](#_Av5okjWA-317)
 
 </td><td>
 
-Delete a value in the map associated with the given key, if any exists. Unlike `.delete(key)`[>>](#_Av2L7rhB-27), it returns the removed value rather than the map instance,
+Delete a value in the map associated with the given key, if any exists. Unlike `.delete(key)`[>>](#_Av5okjWA-313), it returns the removed value rather than the map instance,
 so you can use it for a 'pop' operation.
 
 </td>
@@ -1043,7 +1043,7 @@ so you can use it for a 'pop' operation.
 <tr>
 <td>
 
-`.clear()`[>>](#_Av2L7rhB-31)
+`.clear()`[>>](#_Av5okjWA-321)
 
 </td><td>
 
@@ -1054,7 +1054,7 @@ Clear all entries from the map.
 <tr>
 <td>
 
-`.setAll([keyValuePairsIterable])`[>>](#_Av2L7rhB-33)
+`.setAll([keyValuePairsIterable])`[>>](#_Av5okjWA-323)
 
 </td><td>
 
@@ -1066,7 +1066,7 @@ Add all elements into the map from the given iterable, treating its elements as 
 <tr>
 <td>
 
-`.forEach(callable [, thisObj])`[>>](#_Av2L7rhB-35)
+`.forEach(callable [, thisObj])`[>>](#_Av5okjWA-327)
 
 </td><td>
 
@@ -1078,7 +1078,7 @@ Invoke the given function for every existing entry, in the enumeration order.
 <tr>
 <td>
 
-`.size`[>>](#_Av2L7rhB-37)
+`.size`[>>](#_Av5okjWA-331)
 
 </td><td>
 
@@ -1089,7 +1089,7 @@ Number (integer). The number of entries currently in the map.
 <tr>
 <td>
 
-`.keys()`[>>](#_Av2L7rhB-39)
+`.keys()`[>>](#_Av5okjWA-333)
 
 </td><td>
 
@@ -1100,7 +1100,7 @@ Returns iterator over the keys in the map. The iteration is in chronological ord
 <tr>
 <td>
 
-`.values()`[>>](#_Av2L7rhB-41)
+`.values()`[>>](#_Av5okjWA-336)
 
 </td><td>
 
@@ -1111,34 +1111,34 @@ Returns iterator over the values in the map. The iteration is in chronological o
 <tr>
 <td>
 
-`[Symbol.iterator]`[>>](#_Av2L7rhB-43)
-
-</td><td>
-
-Returns iterator over the entries in the map, same as `.entries()`[>>](#_Av2X6m5W-32). To be used via `for..of` statement or by any other use of the `MapVTK` instance as an iterable.
-
-</td>
-</tr>
-<tr>
-<td>
-
-`[Symbol.toStringTag]`[>>](#_Av2L7rhB-45)
-
-</td><td>
-
-Returns `"MapVTK"`.
-
-</td>
-</tr>
-<tr>
-<td>
-
-`.entries()`[>>](#_Av2X6m5W-32)
+`.entries()`[>>](#_Av5okjWA-339)
 
 </td><td>
 
 Returns iterator over the entries in the map. The iteration is in chronological order of the keys insertion (values for newer keys go later, replacement of an existing key does not change its order).
 Entries are yielded as `[key, value]` arrays.
+
+</td>
+</tr>
+<tr>
+<td>
+
+`[Symbol.iterator]`[>>](#_Av5okjWA-342)
+
+</td><td>
+
+Returns iterator over the entries in the map, same as `.entries()`[>>](#_Av5okjWA-339). To be used via `for..of` statement or by any other use of the `MapVTK` instance as an iterable.
+
+</td>
+</tr>
+<tr>
+<td>
+
+`[Symbol.toStringTag]`[>>](#_Av5okjWA-345)
+
+</td><td>
+
+Returns `"MapVTK"`.
 
 </td>
 </tr>
@@ -1148,7 +1148,7 @@ Entries are yielded as `[key, value]` arrays.
 
 <u>**Members (detailed)**</u>
 
-<a name="_Av2L7rhB-19"></a>
+<a name="_Av5okjWA-297"></a>
 ##### MapVTK([iterable]) #####
 
 Construct an instance of `MapVTK`. Can be used with `new` or as a plain function.
@@ -1169,7 +1169,7 @@ console.log(map.get(ValueType.New `{ y: ${2}, x: ${1} }`));
 #arg ./iterable %arg: An iterable of two-element arrays, optional. Each element is intrpreted as `[key, value]`. The collection to populate the new map with.
 May, in particular, be an instance of `Map` or `MapVTK`.
 
-<a name="_Av2L7rhB-21"></a>
+<a name="_Av5okjWA-299"></a>
 ##### .get(key) #####
 
 Get value from the map associated with the given key.
@@ -1191,7 +1191,7 @@ Description
 <tr>
 <td>
 
-`key`[>>](#_Av2X6m5W-14)
+`key`[>>](#_Av5okjWA-301)
 
 </td><td>
 
@@ -1207,12 +1207,12 @@ The value associated with the key, `undefined` if no equal key exists in the map
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-14"></a>
+<a name="_Av5okjWA-301"></a>
 ###### key ######
 
 The key to search, using value-type equality
 
-<a name="_Av2L7rhB-23"></a>
+<a name="_Av5okjWA-303"></a>
 ##### .set(key, value) #####
 
 Set (or replace existing) value in the map to associate with the given key.
@@ -1234,7 +1234,7 @@ Description
 <tr>
 <td>
 
-`key`[>>](#_Av2X6m5W-16)
+`key`[>>](#_Av5okjWA-305)
 
 </td><td>
 
@@ -1245,7 +1245,7 @@ The key to set or replace, using value-type equality
 <tr>
 <td>
 
-`value`[>>](#_Av2X6m5W-17)
+`value`[>>](#_Av5okjWA-306)
 
 </td><td>
 
@@ -1261,20 +1261,20 @@ The current instance of `MapVTK` itself
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-16"></a>
+<a name="_Av5okjWA-305"></a>
 ###### key ######
 
 The key to set or replace, using value-type equality
 
-<a name="_Av2X6m5W-17"></a>
+<a name="_Av5okjWA-306"></a>
 ###### value ######
 
 The value to associate with the key
 
-<a name="_Av2L7rhB-25"></a>
+<a name="_Av5okjWA-308"></a>
 ##### .replace(key, value) #####
 
-Set (or replace existing) value in the map to associate with the given key. Unlike `.set(key, value)`[>>](#_Av2L7rhB-23), it returns previously associated value rather than the map instance,
+Set (or replace existing) value in the map to associate with the given key. Unlike `.set(key, value)`[>>](#_Av5okjWA-303), it returns previously associated value rather than the map instance,
 so you can use it for an 'exchange value' operation.
 
 <u>**Arguments**</u>
@@ -1294,7 +1294,7 @@ Description
 <tr>
 <td>
 
-`key`[>>](#_Av2X6m5W-19)
+`key`[>>](#_Av5okjWA-310)
 
 </td><td>
 
@@ -1305,7 +1305,7 @@ The key to set or replace, using value-type equality
 <tr>
 <td>
 
-`value`[>>](#_Av2X6m5W-20)
+`value`[>>](#_Av5okjWA-311)
 
 </td><td>
 
@@ -1321,17 +1321,17 @@ The previously associated value, `undefined` if there was none
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-19"></a>
+<a name="_Av5okjWA-310"></a>
 ###### key ######
 
 The key to set or replace, using value-type equality
 
-<a name="_Av2X6m5W-20"></a>
+<a name="_Av5okjWA-311"></a>
 ###### value ######
 
 The value to associate with the key
 
-<a name="_Av2L7rhB-27"></a>
+<a name="_Av5okjWA-313"></a>
 ##### .delete(key) #####
 
 Delete a value in the map associated with the given key, if any exists.
@@ -1353,7 +1353,7 @@ Description
 <tr>
 <td>
 
-`key`[>>](#_Av2X6m5W-22)
+`key`[>>](#_Av5okjWA-315)
 
 </td><td>
 
@@ -1369,15 +1369,15 @@ true if the key existed and was actually deleted, false otherwise
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-22"></a>
+<a name="_Av5okjWA-315"></a>
 ###### key ######
 
 The key to search, using value-type equality
 
-<a name="_Av2L7rhB-29"></a>
+<a name="_Av5okjWA-317"></a>
 ##### .remove(key) #####
 
-Delete a value in the map associated with the given key, if any exists. Unlike `.delete(key)`[>>](#_Av2L7rhB-27), it returns the removed value rather than the map instance,
+Delete a value in the map associated with the given key, if any exists. Unlike `.delete(key)`[>>](#_Av5okjWA-313), it returns the removed value rather than the map instance,
 so you can use it for a 'pop' operation.
 
 <u>**Arguments**</u>
@@ -1397,7 +1397,7 @@ Description
 <tr>
 <td>
 
-`key`[>>](#_Av2X6m5W-24)
+`key`[>>](#_Av5okjWA-319)
 
 </td><td>
 
@@ -1413,17 +1413,17 @@ The removed value if one existed in the map, `undefined` otherwise
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-24"></a>
+<a name="_Av5okjWA-319"></a>
 ###### key ######
 
 The key to search, using value-type equality
 
-<a name="_Av2L7rhB-31"></a>
+<a name="_Av5okjWA-321"></a>
 ##### .clear() #####
 
 Clear all entries from the map.
 
-<a name="_Av2L7rhB-33"></a>
+<a name="_Av5okjWA-323"></a>
 ##### .setAll([keyValuePairsIterable]) #####
 
 Add all elements into the map from the given iterable, treating its elements as key-value pairs. Existing elements with same keys will be replaced.
@@ -1445,7 +1445,7 @@ Description
 <tr>
 <td>
 
-`keyValuePairsIterable`[>>](#_Av2X6m5W-26)
+`keyValuePairsIterable`[>>](#_Av5okjWA-325)
 
 </td><td>
 
@@ -1463,12 +1463,12 @@ This is similar to what constructor of `MapVTK` with non-blank argument does, bu
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-26"></a>
+<a name="_Av5okjWA-325"></a>
 ###### keyValuePairsIterable ######
 
 An iterable of 2-element arrays, which are treated as `[key, value]` pairs.
 
-<a name="_Av2L7rhB-35"></a>
+<a name="_Av5okjWA-327"></a>
 ##### .forEach(callable [, thisObj]) #####
 
 Invoke the given function for every existing entry, in the enumeration order.
@@ -1490,7 +1490,7 @@ Description
 <tr>
 <td>
 
-`callable`[>>](#_Av2X6m5W-28)
+`callable`[>>](#_Av5okjWA-329)
 
 </td><td>
 
@@ -1501,7 +1501,7 @@ A function. It is supposed to take the arguments in the order: `(value, key, thi
 <tr>
 <td>
 
-`thisObj`[>>](#_Av2X6m5W-29)
+`thisObj`[>>](#_Av5okjWA-330)
 
 </td><td>
 
@@ -1516,22 +1516,22 @@ __Note__: `forEach` method is only present to be compliant with standard `Map` i
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-28"></a>
+<a name="_Av5okjWA-329"></a>
 ###### callable ######
 
 A function. It is supposed to take the arguments in the order: `(value, key, thisInstanceOfMapVTK)`. If `thisObj` is supplied, it is invoked as a method of `thisObj`.
 
-<a name="_Av2X6m5W-29"></a>
+<a name="_Av5okjWA-330"></a>
 ###### thisObj ######
 
 An object, optional. The object to bind `callable` to.
 
-<a name="_Av2L7rhB-37"></a>
+<a name="_Av5okjWA-331"></a>
 ##### .size #####
 
 Number (integer). The number of entries currently in the map.
 
-<a name="_Av2L7rhB-39"></a>
+<a name="_Av5okjWA-333"></a>
 ##### .keys() #####
 
 Returns iterator over the keys in the map. The iteration is in chronological order of the keys insertion (newer keys go later, replacement of an existing key does not change its order).
@@ -1540,7 +1540,7 @@ Returns iterator over the keys in the map. The iteration is in chronological ord
 
 Iterator. Each value returned by it is a key in the map.
 
-<a name="_Av2L7rhB-41"></a>
+<a name="_Av5okjWA-336"></a>
 ##### .values() #####
 
 Returns iterator over the values in the map. The iteration is in chronological order of the keys insertion (values for newer keys go later, replacement of an existing key does not change its order).
@@ -1549,25 +1549,7 @@ Returns iterator over the values in the map. The iteration is in chronological o
 
 Iterator. Each value returned by it is a value in the map.
 
-<a name="_Av2L7rhB-43"></a>
-##### [Symbol.iterator] #####
-
-Returns iterator over the entries in the map, same as `.entries()`[>>](#_Av2X6m5W-32). To be used via `for..of` statement or by any other use of the `MapVTK` instance as an iterable.
-
-<u>**Returns:**</u>
-
-Iterator. Each value returned by it is a `[key, value]` array, containing a key-value pair from the map.
-
-<a name="_Av2L7rhB-45"></a>
-##### [Symbol.toStringTag] #####
-
-Returns `"MapVTK"`.
-
-<u>**Returns:**</u>
-
-"MapVTK" string
-
-<a name="_Av2X6m5W-32"></a>
+<a name="_Av5okjWA-339"></a>
 ##### .entries() #####
 
 Returns iterator over the entries in the map. The iteration is in chronological order of the keys insertion (values for newer keys go later, replacement of an existing key does not change its order).
@@ -1577,41 +1559,59 @@ Entries are yielded as `[key, value]` arrays.
 
 Iterator. Each value returned by it is a `[key, value]` array, containing a key-value pair from the map.
 
+<a name="_Av5okjWA-342"></a>
+##### [Symbol.iterator] #####
+
+Returns iterator over the entries in the map, same as `.entries()`[>>](#_Av5okjWA-339). To be used via `for..of` statement or by any other use of the `MapVTK` instance as an iterable.
+
+<u>**Returns:**</u>
+
+Iterator. Each value returned by it is a `[key, value]` array, containing a key-value pair from the map.
+
+<a name="_Av5okjWA-345"></a>
+##### [Symbol.toStringTag] #####
+
+Returns `"MapVTK"`.
+
+<u>**Returns:**</u>
+
+"MapVTK" string
+
 <u>**Properties**</u>
 
-##### .size [>>](#_Av2L7rhB-37) #####
+##### .size [>>](#_Av5okjWA-331) #####
 
-##### [Symbol.iterator] [>>](#_Av2L7rhB-43) #####
+##### [Symbol.iterator] [>>](#_Av5okjWA-342) #####
 
-##### [Symbol.toStringTag] [>>](#_Av2L7rhB-45) #####
+##### [Symbol.toStringTag] [>>](#_Av5okjWA-345) #####
 
 <u>**Methods**</u>
 
-##### MapVTK([iterable]) [>>](#_Av2L7rhB-19) #####
+##### MapVTK([iterable]) [>>](#_Av5okjWA-297) #####
 
-##### .get(key) [>>](#_Av2L7rhB-21) #####
+##### .get(key) [>>](#_Av5okjWA-299) #####
 
-##### .set(key, value) [>>](#_Av2L7rhB-23) #####
+##### .set(key, value) [>>](#_Av5okjWA-303) #####
 
-##### .replace(key, value) [>>](#_Av2L7rhB-25) #####
+##### .replace(key, value) [>>](#_Av5okjWA-308) #####
 
-##### .delete(key) [>>](#_Av2L7rhB-27) #####
+##### .delete(key) [>>](#_Av5okjWA-313) #####
 
-##### .remove(key) [>>](#_Av2L7rhB-29) #####
+##### .remove(key) [>>](#_Av5okjWA-317) #####
 
-##### .clear() [>>](#_Av2L7rhB-31) #####
+##### .clear() [>>](#_Av5okjWA-321) #####
 
-##### .setAll([keyValuePairsIterable]) [>>](#_Av2L7rhB-33) #####
+##### .setAll([keyValuePairsIterable]) [>>](#_Av5okjWA-323) #####
 
-##### .forEach(callable [, thisObj]) [>>](#_Av2L7rhB-35) #####
+##### .forEach(callable [, thisObj]) [>>](#_Av5okjWA-327) #####
 
-##### .keys() [>>](#_Av2L7rhB-39) #####
+##### .keys() [>>](#_Av5okjWA-333) #####
 
-##### .values() [>>](#_Av2L7rhB-41) #####
+##### .values() [>>](#_Av5okjWA-336) #####
 
-##### .entries() [>>](#_Av2X6m5W-32) #####
+##### .entries() [>>](#_Av5okjWA-339) #####
 
-<a name="_Av2L7rhB-47"></a>
+<a name="_Av5okjWA-348"></a>
 #### .quadsugarTags(qsNSO [, tagsDict]) ####
 
 Creates dictionary of VT support static tags for Quadsugar's `.useStaticTags`. An example of use:
@@ -1633,7 +1633,7 @@ Description
 <tr>
 <td>
 
-`qsNSO`[>>](#_Av2X6m5W-37)
+`qsNSO`[>>](#_Av5okjWA-350)
 
 </td><td>
 
@@ -1644,7 +1644,7 @@ The Quadsugar namespace value (should be `QUADSUGAR` in a browser environment).
 <tr>
 <td>
 
-`tagsDict`[>>](#_Av2X6m5W-38)
+`tagsDict`[>>](#_Av5okjWA-351)
 
 </td><td>
 
@@ -1671,12 +1671,12 @@ QUADSUGAR.useStaticTags({
 
 <u>**Arguments (detailed)**</u>
 
-<a name="_Av2X6m5W-37"></a>
+<a name="_Av5okjWA-350"></a>
 ##### qsNSO #####
 
 The Quadsugar namespace value (should be `QUADSUGAR` in a browser environment).
 
-<a name="_Av2X6m5W-38"></a>
+<a name="_Av5okjWA-351"></a>
 ##### tagsDict #####
 
 Dictionary of tags to use in the QS wrapped code for various VT features. Keys are feature identifiers (mostly match the tag function names from `ValueType` namespace), the values are
@@ -1685,34 +1685,34 @@ which is the same as letting all tags be assigned as by default.
 
 <u>**Properties**</u>
 
-<a name="_Av2X6m5W-39"></a>
+<a name="_Av5okjWA-352"></a>
 ###### Schema ######
 
 Name for QS static tag that mirrors `ValueType.Schema` (and has same usage syntax). Default is `VT.Schema`.
 
-<a name="_Av2X6m5W-40"></a>
+<a name="_Av5okjWA-353"></a>
 ###### New ######
 
 Name for QS static tag that mirrors `ValueType.New` (and has same usage syntax). Default is `VT.New`.
 
-<a name="_Av2X6m5W-41"></a>
+<a name="_Av5okjWA-354"></a>
 ###### From ######
 
 Name for QS static tag that mirrors `ValueType.From` (and has same usage syntax). Default is `VT.From`. Name for QS static tag that provides VT's custom algebra for value-type equality and unequality comparison. By default this tag is disabled.
 
 <u>**Methods**</u>
 
-#### .equals(v1, v2) [>>](#_Av2L7rhB-9) ####
+#### .equals(v1, v2) [>>](#_Av5okjWA-276) ####
 
-#### .comparator(v1, v2 [, differNonVto]) [>>](#_Av2L7rhB-11) ####
+#### .comparator(v1, v2 [, differNonVto]) [>>](#_Av5okjWA-281) ####
 
-#### .isValue(v) [>>](#_Av2L7rhB-13) ####
+#### .isValue(v) [>>](#_Av5okjWA-287) ####
 
-#### .isValueTypeObject(v) [>>](#_Av2L7rhB-15) ####
+#### .isValueTypeObject(v) [>>](#_Av5okjWA-291) ####
 
-#### .quadsugarTags(qsNSO [, tagsDict]) [>>](#_Av2L7rhB-47) ####
+#### .quadsugarTags(qsNSO [, tagsDict]) [>>](#_Av5okjWA-348) ####
 
-<a name="_Av2X6m5W-1"></a>
+<a name="_Av5okjWA-261"></a>
 ### Schema literals grammar ###
 
 This chapter gives some detailed insight into the schema literals grammar used in `New`, `From`, and `Schema`.
